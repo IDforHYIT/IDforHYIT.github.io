@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+        <link rel="dns-prefetch" href="https://cdn-city.livere.com">
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            『Google机器学习速成课程』学习手记（一） | 
+        
+        IDforHYIT&#39;s blogs
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/images/panda_1_16x16.png">
+    <link rel="icon" href="/images/panda_1_32x32.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="机器学习主要术语篇
+
+本文参考Google机器学习的在线课程，对其中的一些机器学习的主要术语进行了摘要整理，体悟感受会慢慢补充。
+
+
+本文主要以垃圾邮件检测器以及房价为概念实例进行具体解释。
+">
+    <meta name="keywords" content="Blog,摘要感悟,机器学习,技术向">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="IDforHYIT&#39;s blogs">
+    <meta name="msapplication-starturl" content="https://idforhyit.coding.me/2018/10/07/google-machine-learning-note/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="IDforHYIT&#39;s blogs">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/images/panda_1_32x32.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://idforhyit.coding.me/2018/10/07/google-machine-learning-note/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="『Google机器学习速成课程』学习手记（一） | IDforHYIT&#39;s blogs">
+    <meta property="og:image" content="/images/panda_1_32x32.png">
+    <meta property="og:description" content="机器学习主要术语篇
+
+本文参考Google机器学习的在线课程，对其中的一些机器学习的主要术语进行了摘要整理，体悟感受会慢慢补充。
+
+
+本文主要以垃圾邮件检测器以及房价为概念实例进行具体解释。
+">
+    <meta property="og:article:tag" content="摘要感悟"> <meta property="og:article:tag" content="机器学习"> <meta property="og:article:tag" content="技术向"> 
+
+    
+        <meta property="article:published_time" content="Sun Oct 07 2018 21:23:24 GMT+0800">
+        <meta property="article:modified_time" content="Sun Apr 14 2019 18:12:57 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://idforhyit.coding.me/2018/10/07/google-machine-learning-note/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://idforhyit.coding.me/2018/10/07/google-machine-learning-note/index.html",
+    "headline": "『Google机器学习速成课程』学习手记（一）",
+    "datePublished": "Sun Oct 07 2018 21:23:24 GMT+0800",
+    "dateModified": "Sun Apr 14 2019 18:12:57 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "IDforHYIT",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/avatar_github.jpg"
+        },
+        "description": "病名为哀，,为卿所爱 "
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDforHYIT&#39;s blogs",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/images/panda_1_32x32.png"
+        }
+    },
+    "keywords": ",摘要感悟,机器学习,技术向Blog",
+    "description": "机器学习主要术语篇
+
+本文参考Google机器学习的在线课程，对其中的一些机器学习的主要术语进行了摘要整理，体悟感受会慢慢补充。
+
+
+本文主要以垃圾邮件检测器以及房价为概念实例进行具体解释。
+",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是（监督式）机器学习？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是（监督式）机器学习？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-标签"><span class="post-toc-number">2.</span> <span class="post-toc-text">1. 标签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-特征"><span class="post-toc-number">3.</span> <span class="post-toc-text">2. 特征</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-样本"><span class="post-toc-number">4.</span> <span class="post-toc-text">3. 样本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-模型"><span class="post-toc-number">5.</span> <span class="post-toc-text">4. 模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-回归与分类"><span class="post-toc-number">6.</span> <span class="post-toc-text">5. 回归与分类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-理解情况检查练习"><span class="post-toc-number">7.</span> <span class="post-toc-text">6. 理解情况检查练习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-监督式学习"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">1. 监督式学习</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-特征和标签"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">2. 特征和标签</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-附赠维基百科及谷歌开发者网站的相关链接"><span class="post-toc-number">8.</span> <span class="post-toc-text">7. 附赠维基百科及谷歌开发者网站的相关链接</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                『Google机器学习速成课程』学习手记（一）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/images/avatar_github.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>IDforHYIT</strong>
+        <span>10月 07, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1ElEQVR42u3aQXLjMAwEQP//07sPyKoyA3hTDtk6uSxLZOMQBABff668XtjY2NjY2NjY2NgfyX7F19en/vHqh++f1mrvrvaMjY2NfTT7mz/9Jft/BOsNe8bGxsa+gP206afPX59Kvk/u5mFK9oyNjY2NnZQBT5g2lG0hhI2NjY29Z7ctpLyMmYUJGxsb+2Z2UhIkBcbsl7MQ/FAvDRsbG/vj2fnQ9HM+/+h8GxsbG/uD2e0V/dNfHs3JU91q59jY2NiHsvPE0DaPkoHBe0cU3+wTGxsb+2h23qZpt9UGqGgSlQkPGxsb+wZ2nkjaMiMpWtqhcjIwxsbGxr6BPWsntYCc3Q6P86BgY2Njn8qORqSjhDRLRcmzswYTNjY29qnsoilTFip5WJ/eP2sqDefb2NjY2L+c3S7ZJq1N0382Eo4SGDY2Nvah7DYc7UY3jar2LjY2NvYN7M0hyDxASZjaQz9JQwobGxv7BnZbfrRNouR6V1MJGxsb+2Z2nk6GyWOR0vJA100lbGxs7IPY+7Q0a0W1K7ZlDzY2NvY97LyplA8GZsHKj1om+8TGxsa+h902aDYt+3cdvszvYmNjY5/NbjcxSyr7cmWT5LCxsbFvYO8PVm5KmjZRte/ExsbGPpu9X2w2+t2MdZMVi6kINjY29i9nt+PV2YGeJBBt26hOftjY2NiXsffN/f2zyZuLIgobGxv7Avaw7R4fi8zHAMnd9sLGxsa+gf2uBLZPPO2INwkQNjY29qnsOg2UiaQNR7tuMYTAxsbGPpS9SQn52CAfGMzGycNBLzY2NvZB7DwJJWXJZnybrDsslrCxsbEvYOfJY9a4nx3ZzJPrsJeGjY2NjT0aDOfFRlvwPL4BGxsbGztp3IzGwJsCIx8YYGNjY9/Aboe1ebt/NqDND/pEe8bGxsY+mt0WGG2DqR36tmGNnsXGxsY+lH3PhY2NjY2NjY2Njf0x119c9ElLBEYneQAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/技术向/">技术向</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/摘要感悟/">摘要感悟</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/机器学习/">机器学习</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><strong>机器学习主要术语</strong>篇</p>
+<blockquote>
+<p>本文参考<a href="https://developers.google.com/machine-learning/crash-course/" target="_blank" rel="noopener">Google机器学习的在线课程</a>，对其中的一些机器学习的主要术语进行了摘要整理，体悟感受会慢慢补充。</p>
+</blockquote>
+<blockquote>
+<p>本文主要以垃圾邮件检测器以及房价为概念实例进行具体解释。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="什么是（监督式）机器学习？"><a href="#什么是（监督式）机器学习？" class="headerlink" title="什么是（监督式）机器学习？"></a>什么是（监督式）机器学习？</h2><p>简单来说，它的定义如下：</p>
+<ul>
+<li><blockquote>
+<p>机器学习系统通过学习如何组合输入信息来对从未见过的数据做出有用的预测。</p>
+</blockquote>
+<hr>
+<p><strong>下面我们来了解一下几个机器学习的基本术语。</strong></p>
+</li>
+</ul>
+<h2 id="1-标签"><a href="#1-标签" class="headerlink" title="1. 标签"></a>1. 标签</h2><p><strong>标签</strong>是我们要预测的事物，即简单线性回归中的 <code>y</code> 变量。标签可以是小麦未来的价格、图片中显示的动物品种、音频剪辑的含义或任何事物。</p>
+<h2 id="2-特征"><a href="#2-特征" class="headerlink" title="2. 特征"></a>2. 特征</h2><p><strong>特征</strong>是输入变量，即简单线性回归中的 <code>x</code> 变量。简单的机器学习项目可能会使用单个特征，而比较复杂的机器学习项目可能会使用数百万个特征，按如下方式指定：<br>$$<br>{x_1, x_2, … x_n}<br>$$<br>在垃圾邮件检测器示例中，特征可能包括：</p>
+<ul>
+<li>电子邮件文本中的字词</li>
+<li>发件人的地址</li>
+<li>发送电子邮件的时段</li>
+<li>电子邮件中包含“一种奇怪的把戏”这样的短语。</li>
+</ul>
+<h2 id="3-样本"><a href="#3-样本" class="headerlink" title="3. 样本"></a>3. 样本</h2><p><strong>样本</strong>是指数据的特定实例：<strong>x</strong>。（我们采用粗体 <strong>x</strong> 表示它是一个矢量。）我们将样本分为以下两类：</p>
+<ul>
+<li>有标签样本</li>
+<li>无标签样本</li>
+</ul>
+<p><strong>有标签样本</strong>同时包含特征和标签。即：</p>
+<pre><code>  labeled examples: {features, label}: (x, y)
+</code></pre><p>我们使用有标签样本来<strong>训练</strong>模型。在我们的垃圾邮件检测器示例中，有标签样本是用户明确标记为“垃圾邮件”或“非垃圾邮件”的各个电子邮件。</p>
+<p>例如，下表显示了从包含加利福尼亚州房价信息的<a href="https://developers.google.com/machine-learning/crash-course/california-housing-data-description?hl=zh-cn" target="_blank" rel="noopener">数据集</a>中抽取的 5 个有标签样本：</p>
+<table>
+<thead>
+<tr>
+<th>housingMedianAge （特征）</th>
+<th>totalRooms （特征）</th>
+<th>totalBedrooms （特征）</th>
+<th>medianHouseValue （标签）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15</td>
+<td>5612</td>
+<td>1283</td>
+<td>66900</td>
+</tr>
+<tr>
+<td>19</td>
+<td>7650</td>
+<td>1901</td>
+<td>80100</td>
+</tr>
+<tr>
+<td>17</td>
+<td>720</td>
+<td>174</td>
+<td>85700</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1501</td>
+<td>337</td>
+<td>73400</td>
+</tr>
+<tr>
+<td>20</td>
+<td>1454</td>
+<td>326</td>
+<td>65500</td>
+</tr>
+</tbody>
+</table>
+<p><strong>无标签样本</strong>包含特征，但不包含标签。即：</p>
+<pre><code>  unlabeled examples: {features, ?}: (x, ?)
+</code></pre><p>在使用有标签样本训练了我们的模型之后，我们会使用该模型来预测无标签样本的标签。在垃圾邮件检测器示例中，无标签样本是用户尚未添加标签的新电子邮件。</p>
+<h2 id="4-模型"><a href="#4-模型" class="headerlink" title="4. 模型"></a>4. 模型</h2><p>模型定义了特征与标签之间的关系。例如，垃圾邮件检测模型可能会将某些特征与“垃圾邮件”紧密联系起来。我们来重点介绍一下模型生命周期的两个阶段：</p>
+<ul>
+<li><strong>训练</strong>表示创建或<strong>学习</strong>模型。也就是说，您向模型展示有标签样本，让模型逐渐学习特征与标签之间的关系。</li>
+<li><strong>推断</strong>表示将训练后的模型应用于无标签样本。也就是说，您使用训练后的模型来做出有用的预测 (<code>y&#39;</code>)。例如，在推断期间，您可以针对新的无标签样本预测 <code>medianHouseValue</code>。</li>
+</ul>
+<h2 id="5-回归与分类"><a href="#5-回归与分类" class="headerlink" title="5. 回归与分类"></a>5. 回归与分类</h2><p><strong>回归</strong>模型可预测连续值。例如，回归模型做出的预测可回答如下问题：</p>
+<ul>
+<li>加利福尼亚州一栋房产的价值是多少？</li>
+<li>用户点击此广告的概率是多少？</li>
+</ul>
+<p><strong>分类</strong>模型可预测离散值。例如，分类模型做出的预测可回答如下问题：</p>
+<ul>
+<li>某个指定电子邮件是垃圾邮件还是非垃圾邮件？</li>
+<li>这是一张狗、猫还是仓鼠图片？</li>
+</ul>
+<blockquote>
+<p><strong>本文关键词</strong></p>
+<table>
+<thead>
+<tr>
+<th><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#classification_model" target="_blank" rel="noopener">分类模型</a></th>
+<th><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#example" target="_blank" rel="noopener">样本</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#feature" target="_blank" rel="noopener">特征</a></td>
+<td><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#inference" target="_blank" rel="noopener">推断</a></td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#label" target="_blank" rel="noopener">标签</a></td>
+<td><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#model" target="_blank" rel="noopener">模型</a></td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#regression_model" target="_blank" rel="noopener">回归</a></td>
+<td><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#training" target="_blank" rel="noopener">训练</a></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="6-理解情况检查练习"><a href="#6-理解情况检查练习" class="headerlink" title="6. 理解情况检查练习"></a>6. 理解情况检查练习</h2><h3 id="1-监督式学习"><a href="#1-监督式学习" class="headerlink" title="1. 监督式学习"></a>1. 监督式学习</h3><p><img src="\images\google_machine_learning_img\test-1.1.png" alt="test-1.1"></p>
+<h3 id="2-特征和标签"><a href="#2-特征和标签" class="headerlink" title="2. 特征和标签"></a>2. 特征和标签</h3><p><img src="\images\google_machine_learning_img\test-1.2.png" alt="test-1.2"></p>
+<h2 id="7-附赠维基百科及谷歌开发者网站的相关链接"><a href="#7-附赠维基百科及谷歌开发者网站的相关链接" class="headerlink" title="7. 附赠维基百科及谷歌开发者网站的相关链接"></a>7. 附赠维基百科及谷歌开发者网站的相关链接</h2><blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%8F%B2" target="_blank" rel="noopener">人工智能史</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0" target="_blank" rel="noopener">机器学习</a></p>
+<p><a href="https://developers.google.com/machine-learning/crash-course/glossary?hl=zh-cn#classification_model" target="_blank" rel="noopener">机器学习术语表</a></p>
+</blockquote>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="#" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://idforhyit.coding.me/2018/10/07/google-machine-learning-note/">https://idforhyit.coding.me/2018/10/07/google-machine-learning-note/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODg1NC8xNTM4Mg==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/10/09/『简明版』重装系统123——激活系统/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/10/04/windows-reinstall/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/images/avatar_github.jpg" alt="IDforHYIT's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        idforhyit@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: idforhyit@qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://idforhyit.coding.me/GitBook/" target="_blank" title="GitBook">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">library_books</i>
+                        
+                        GitBook
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">2</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Lab/">Lab<span class="sidebar_archives-count">8</span></a></li><li><a class="sidebar_archives-link" href="/categories/备忘录/">备忘录<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/建站更新/">建站更新<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/搞点东西/">搞点东西<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/术业专攻/">术业专攻<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/蓝桥杯/">蓝桥杯<span class="sidebar_archives-count">13</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">insert_photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">table_chart</i>
+                
+                Tags
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">35</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/IDforHYIT/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;1999&nbsp;-<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>IDforHYIT's blogs
+            
+                <br>
+                
+                    <a href="https://996.icu/#/zh_CN" rel="nofollow">996ICU 备2333号-9527</a>
+                
+            
+            
+            <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div>
+            <span id="busuanzi_container_site_uv">本站访客数为<span id="busuanzi_value_site_uv"></span> 次
+                &nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+            <span id="busuanzi_container_site_pv">总访问量为<span id="busuanzi_value_site_pv"></span> 人次 
+            </span></span></div>
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <!-- <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div> -->
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <center><div class="footer-develop-div">本页面由<a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>强力驱动</div></center>
+                <center><div class="footer-develop-div">Theme by <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>（Mod By IDforHYIT）</div></center>
+                <center>ღ( ´･ᴗ･` )比心</center>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    
+        <script>lsloader.load("sm_js","/js/smoothscroll.js?lOy/ACj5suSNi7ZVFVbpFQ==", true)</script>
+    
+
+
+
+<!-- Busuanzi -->
+<!-- 
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ -->
+
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+
+   
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
