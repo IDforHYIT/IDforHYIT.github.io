@@ -47,7 +47,7 @@
     
     <title>
         
-            tags | 
+            Conda 常用命令操作实例 | 
         
         IDforHYIT&#39;s blogs
     </title>
@@ -58,7 +58,7 @@
 
     <meta name="format-detection" content="telephone=no">
     <meta name="description" itemprop="description" content="个人博客">
-    <meta name="keywords" content="Blog">
+    <meta name="keywords" content="Blog,Anaconda">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -219,7 +219,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="IDforHYIT&#39;s blogs">
-    <meta name="msapplication-starturl" content="https://idforhyit.github.io/tags/">
+    <meta name="msapplication-starturl" content="https://idforhyit.github.io/2019/04/30/Anaconda-normal-notes/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="IDforHYIT&#39;s blogs">
@@ -234,13 +234,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://idforhyit.github.io/tags/">
+    <meta property="og:url" content="https://idforhyit.github.io/2019/04/30/Anaconda-normal-notes/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="tags | IDforHYIT&#39;s blogs">
+    <meta property="og:title" content="Conda 常用命令操作实例 | IDforHYIT&#39;s blogs">
     <meta property="og:image" content="/images/panda_1_32x32.png">
     <meta property="og:description" content="个人博客">
-    
+    <meta property="og:article:tag" content="Anaconda"> 
 
+    
+        <meta property="article:published_time" content="Tue Apr 30 2019 18:31:40 GMT+0800">
+        <meta property="article:modified_time" content="Tue Apr 30 2019 18:37:09 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -248,13 +251,43 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://idforhyit.github.io/tags/index.html">
+        <link rel="canonical" href="https://idforhyit.github.io/2019/04/30/Anaconda-normal-notes/index.html">
     
 
     <!-- Structured-data for SEO -->
     
         
 
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://idforhyit.github.io/2019/04/30/Anaconda-normal-notes/index.html",
+    "headline": "Conda 常用命令操作实例",
+    "datePublished": "Tue Apr 30 2019 18:31:40 GMT+0800",
+    "dateModified": "Tue Apr 30 2019 18:37:09 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "IDforHYIT",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/avatar_github.jpg"
+        },
+        "description": "病名为哀，,为卿所爱 "
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDforHYIT&#39;s blogs",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/images/panda_1_32x32.png"
+        }
+    },
+    "keywords": ",AnacondaBlog",
+    "description": "个人博客",
+}
+</script>
 
 
     
@@ -290,60 +323,295 @@
 
                     <!-- Post TOC -->
 
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Conda-常用命令操作实例"><span class="post-toc-number">1.</span> <span class="post-toc-text">Conda 常用命令操作实例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">总</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建环境"><span class="post-toc-number">1.0.1.1.</span> <span class="post-toc-text">创建环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#进入环境"><span class="post-toc-number">1.0.1.2.</span> <span class="post-toc-text">进入环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#列出当前环境已安装的包"><span class="post-toc-number">1.0.1.3.</span> <span class="post-toc-text">列出当前环境已安装的包</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#导出环境信息"><span class="post-toc-number">1.0.1.4.</span> <span class="post-toc-text">导出环境信息</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#离开环境"><span class="post-toc-number">1.0.1.5.</span> <span class="post-toc-text">离开环境</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除环境"><span class="post-toc-number">1.0.1.6.</span> <span class="post-toc-text">删除环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#附：官方命令帮助文件"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">附：官方命令帮助文件</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
 
 <!-- Layouts -->
 
-    <!-- Tags Cloud -->
-    <style>
-    #bottom{
-        position: relative;
-    }
+    <!-- Post Module -->
+    <div class="material-post_container">
 
-    @media screen and (max-width: 480px) {
-        .material-tagscloud{
-            margin: 6em 2em 0;
-        }
-    }
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
 
-    .material-tagscloud a{
-        text-decoration:none;
-        padding: 1px 9px;
-        margin: 9px 1px;
-        line-height: 40px;
-        white-space: nowrap;
-        transition: .6s;
-        opacity: .85;
-    }
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/images/thumbnail_img/conda_logo.svg)">
+    
+            <p class="article-headline-p">
+                Conda 常用命令操作实例
+            </p>
+        </div>
 
-    .material-tagscloud a:hover{
-        transition: .6s;
-        opacity: 1;
-        background: #FAFAFA;
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
-    }
-</style>
 
-<div class=" material-tagscloud">
-    <div class="material-post mdl-grid">
-        <a href="/tags/Anaconda/" style="font-size: 28.67px; color: #3d3d3d">Anaconda</a> <a href="/tags/BASIC/" style="font-size: 31.83px; color: #2f2f2f">BASIC</a> <a href="/tags/BEGIN/" style="font-size: 25.5px; color: #4b4b4b">BEGIN</a> <a href="/tags/C/" style="font-size: 35px; color: #212121">C++</a> <a href="/tags/FaceNet/" style="font-size: 22.33px; color: #595959">FaceNet</a> <a href="/tags/GPU/" style="font-size: 16px; color: #757575">GPU</a> <a href="/tags/Git/" style="font-size: 16px; color: #757575">Git</a> <a href="/tags/HTML/" style="font-size: 16px; color: #757575">HTML</a> <a href="/tags/Hexo/" style="font-size: 16px; color: #757575">Hexo</a> <a href="/tags/LFW/" style="font-size: 19.17px; color: #676767">LFW</a> <a href="/tags/Lab/" style="font-size: 16px; color: #757575">Lab</a> <a href="/tags/OpenCV/" style="font-size: 16px; color: #757575">OpenCV</a> <a href="/tags/PDF/" style="font-size: 16px; color: #757575">PDF</a> <a href="/tags/Python/" style="font-size: 19.17px; color: #676767">Python</a> <a href="/tags/TensorFlow/" style="font-size: 22.33px; color: #595959">TensorFlow</a> <a href="/tags/Windows/" style="font-size: 16px; color: #757575">Windows</a> <a href="/tags/github/" style="font-size: 16px; color: #757575">github</a> <a href="/tags/个人向/" style="font-size: 22.33px; color: #595959">个人向</a> <a href="/tags/刷题/" style="font-size: 35px; color: #212121">刷题</a> <a href="/tags/吐血之作/" style="font-size: 16px; color: #757575">吐血之作</a> <a href="/tags/啰嗦向/" style="font-size: 16px; color: #757575">啰嗦向</a> <a href="/tags/备忘录/" style="font-size: 19.17px; color: #676767">备忘录</a> <a href="/tags/建站/" style="font-size: 19.17px; color: #676767">建站</a> <a href="/tags/技术向/" style="font-size: 16px; color: #757575">技术向</a> <a href="/tags/搞事情/" style="font-size: 16px; color: #757575">搞事情</a> <a href="/tags/搞事教程/" style="font-size: 16px; color: #757575">搞事教程</a> <a href="/tags/摘要感悟/" style="font-size: 22.33px; color: #595959">摘要感悟</a> <a href="/tags/效率/" style="font-size: 19.17px; color: #676767">效率</a> <a href="/tags/文件备份/" style="font-size: 16px; color: #757575">文件备份</a> <a href="/tags/机器学习/" style="font-size: 22.33px; color: #595959">机器学习</a> <a href="/tags/简要备忘/" style="font-size: 22.33px; color: #595959">简要备忘</a> <a href="/tags/系统安装/" style="font-size: 16px; color: #757575">系统安装</a> <a href="/tags/蓝桥杯/" style="font-size: 35px; color: #212121">蓝桥杯</a> <a href="/tags/计算机视觉/" style="font-size: 19.17px; color: #676767">计算机视觉</a> <a href="/tags/软件推荐/" style="font-size: 22.33px; color: #595959">软件推荐</a> <a href="/tags/重装系统/" style="font-size: 16px; color: #757575">重装系统</a>
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/images/avatar_github.jpg" width="44px" height="44px" alt="Author Avatar">
     </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>IDforHYIT</strong>
+        <span>4月 30, 2019</span>
+    </div>
+
+    <p style="font-family:verdana;font: size 8px;"> <span id="busuanzi_container_page_pv"> <img src="https://material.io/tools/icons/static/icons/outline-remove_red_eye-24px.svg" width="18" alt="本页面访问量"> <b><span id="busuanzi_value_page_pv"></span></b></span></p>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC3klEQVR42u3aW27jMBAEQN//0rsHSCJ3D+VAIYtfRiTLLBrwZB6vf0euFzY2NjY2NjY2NvYj2a94ffOgL1ev3/X1zpWr7Z6xsbGx92a/+em/ZF9v9KftzsAre8bGxsY+gf1TALh+nWCuA09+/2zP2NjY2NgrR5ODi6QCGxsbG/tjASwvReUlqlkQxcbGxj6TnRRocnbynLuC08dradjY2NiPZ+eh6Dmvf7W/jY2Njf1gdj3CGDR085TjOqRdh8N659jY2NibstdTi3xb97Yf8n1iY2Njn8CO3lYWgPJDWWke518DNjY29mnshJRcTahteyAvimFjY2OfwJ6lFvk4ThKEkibu7FixsbGxz2HP/um/LUlIwk8ZPrGxsbGxW2pbbFp5ZnJ/1N/GxsbG3oh9vYlksCYvUSWpxWwE883Xho2Njb01O/+YWdhrBzSvj3j2TGxsbOy92W2YaQcu1//StpyxsbGxz2G3DdS8bJQnMOstijqAYWNjY2/ETtqxs0NpC0x3tXVvG77ExsbG/iPsWZqRNwnaQ5mFzCgFwsbGxt6aPQtpeaugpeahtHgmNjY29gHsdgQzB7fFoFlL+E0IxMbGxt6UPTuCNlzl6UQ+lPNLM6fY2NjYj2fnDde8PXBvcaotSBX9bWxsbOwt2El60G5rdqDroz9vPh0bGxt7U/aw1F6GmfWA1x5xXUvDxsbG3po9u2cWCF/xyj8LGxsb+xz2rMW7ElraMc3k6lItDRsbG/uPs9thmhVeS32NFjY2NvYJ7HbdBWifmTcwoqISNjY29kbsYTCIW7B5snFXEC3iNjY2NvZG7LwF2/Jmg5JtmnS9Q2xsbOxz2G0TNw9R7SDOrHh08/AlNjY29tbspLnb3pMXnmbtCmxsbGzs2daT48jbALMGBjY2NvY57JWEYSXNmN3fHhM2Njb23uyVwk3+rhywcudH+tvY2NjYD2afs7CxsbGxsbGxsbEfs/4DqL9yFFlCOU4AAAAASUVORK5CYII=">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+
+
+    <!-- share --> 
+    <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">share</i>
+            <span class="visuallyhidden">show menu</span>
+    </button>
+        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
+                            
+            
+
+            
+                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&pic=https://idforhyit.github.io/images/panda_1_16x16.png&searchPic=false&style=simple" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到微博
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&via=IDforHYIT" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Twitter
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Facebook
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://plus.google.com/share?url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Google+
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://idforhyit.github.io&title=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 LinkedIn
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=IDforHYIT&#39;s blogs&title=IDforHYIT&#39;s blogs&summary=个人博客&pics=https://idforhyit.github.io/images/panda_1_16x16.png&url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 QQ
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="https://telegram.me/share/url?url=https://idforhyit.github.io&text=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 Telegram
+                    </li>
+                </a>
+            
+        </ul>
+
+
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Anaconda/">Anaconda</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Conda-常用命令操作实例"><a href="#Conda-常用命令操作实例" class="headerlink" title="Conda 常用命令操作实例"></a>Conda 常用命令操作实例</h1><h3 id="总"><a href="#总" class="headerlink" title="总"></a><strong>总</strong></h3><p>==看官方帮助文档是最有效的获取所需行为的手段==。另外，辅助些网络博文也是可以的，嘻~</p>
+<hr>
+<h4 id="创建环境"><a href="#创建环境" class="headerlink" title="创建环境"></a><strong>创建环境</strong></h4><pre><code class="python">conda create -n py36 python=3.6    # 创建Python3.6环境（目前较流行通用的版本）
+### py36指的是环境名字，python=3.6指定了环境的Python版本（也可换为其他package_spec） ###
+</code></pre>
+<blockquote>
+<p><a href="https://conda.io/projects/conda/en/latest/commands/create.html" target="_blank" rel="noopener"><code>conda create</code> 官方命令参数解释</a></p>
+</blockquote>
+<h4 id="进入环境"><a href="#进入环境" class="headerlink" title="进入环境"></a><strong>进入环境</strong></h4><pre><code>activate py36
+</code></pre><h4 id="列出当前环境已安装的包"><a href="#列出当前环境已安装的包" class="headerlink" title="列出当前环境已安装的包"></a><strong>列出当前环境已安装的包</strong></h4><pre><code>conda list
+</code></pre><blockquote>
+<p><a href="https://conda.io/projects/conda/en/latest/commands/list.html" target="_blank" rel="noopener"><code>conda list</code> 官方命令参数解释</a></p>
+</blockquote>
+<h4 id="导出环境信息"><a href="#导出环境信息" class="headerlink" title="导出环境信息"></a><strong>导出环境信息</strong></h4><blockquote>
+<p>共享环境非常有用，它能让其他人安装你的代码中使用的所有包，并确保这些包的版本正确。比如你开发了一个药店数据分析系统，你要提交给项目部署系统的王二狗来部署你的项目，但是王二狗并不知道你当时开发时使用的是哪个python版本，以及使用了哪些包和包的版本。这怎么办呢？</p>
+<p>你可以在你当前的环境中终端中使用 conda env export &gt; environment.yaml 将你当前的环境保存到文件中包保存为YAML文件（包括Pyhton版本和所有包的名称）。</p>
+<pre><code>conda env export &gt; environment.yaml
+</code></pre></blockquote>
+<h4 id="离开环境"><a href="#离开环境" class="headerlink" title="离开环境"></a><strong>离开环境</strong></h4><pre><code>deactivate
+</code></pre><h4 id="删除环境"><a href="#删除环境" class="headerlink" title="删除环境"></a><strong>删除环境</strong></h4><pre><code class="python">conda env remove -n py36
+### py36指的是环境名字，按需而变
+</code></pre>
+<blockquote>
+<p><a href="https://conda.io/projects/conda/en/latest/commands/remove.html" target="_blank" rel="noopener"><code>conda remove</code>官方命令参数解释</a></p>
+</blockquote>
+<hr>
+<h3 id="附：官方命令帮助文件"><a href="#附：官方命令帮助文件" class="headerlink" title="附：官方命令帮助文件"></a>附：官方命令帮助文件</h3><blockquote>
+<p><a href="https://conda.io/projects/conda/en/latest/commands.html" target="_blank" rel="noopener">https://conda.io/projects/conda/en/latest/commands.html</a></p>
+</blockquote>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons/" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://idforhyit.github.io/2019/04/30/Anaconda-normal-notes/">https://idforhyit.github.io/2019/04/30/Anaconda-normal-notes/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
 </div>
 
 
-<script type="text/ls-javascript" id="page-tagcloud-script">
-    var adjustFooter = function() {
-        if( ($('#bottom').offset().top + $('#bottom').outerHeight() ) < $(window).height() ) {
-            var footerBottom = $(window).height() - $('#bottom').outerHeight() - $('#bottom').offset().top;
-            $('#bottom').css('bottom', '-' + footerBottom + 'px');
-        }
-    };
+                
 
-    $(document).ready(function() {
-        adjustFooter();
-    });
-</script>
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODg1NC8xNTM4Mg==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
 
+                
+            </div>
 
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2019/04/16/blogs-on-coding-notes/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
 
 
 
@@ -605,6 +873,14 @@ It will not impact the appearance and can give developers a lot of support :)
 </aside>
 
                     
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
 
                     
 
