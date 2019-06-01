@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+        <link rel="dns-prefetch" href="https://cdn-city.livere.com">
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            『深度』使用Docker搭建远程解释器 | 
+        
+        IDforHYIT&#39;s blogs
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/images/panda_1_16x16.png">
+    <link rel="icon" href="/images/panda_1_32x32.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="
+PyCharm+Docker：打造最舒适的深度学习炼丹炉
+">
+    <meta name="keywords" content="Blog,GPU,深度,Docker,Pycharm">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="IDforHYIT&#39;s blogs">
+    <meta name="msapplication-starturl" content="https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="IDforHYIT&#39;s blogs">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/images/panda_1_32x32.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="『深度』使用Docker搭建远程解释器 | IDforHYIT&#39;s blogs">
+    <meta property="og:image" content="/images/panda_1_32x32.png">
+    <meta property="og:description" content="
+PyCharm+Docker：打造最舒适的深度学习炼丹炉
+">
+    <meta property="og:article:tag" content="GPU"> <meta property="og:article:tag" content="深度"> <meta property="og:article:tag" content="Docker"> <meta property="og:article:tag" content="Pycharm"> 
+
+    
+        <meta property="article:published_time" content="Sat Jun 01 2019 21:29:00 GMT+0800">
+        <meta property="article:modified_time" content="Sat Jun 01 2019 22:43:06 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/index.html",
+    "headline": "『深度』使用Docker搭建远程解释器",
+    "datePublished": "Sat Jun 01 2019 21:29:00 GMT+0800",
+    "dateModified": "Sat Jun 01 2019 22:43:06 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "IDforHYIT",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/avatar_github.jpg"
+        },
+        "description": "病名为哀，,为卿所爱 "
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDforHYIT&#39;s blogs",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/images/panda_1_32x32.png"
+        }
+    },
+    "keywords": ",GPU,深度,Docker,PycharmBlog",
+    "description": "
+PyCharm+Docker：打造最舒适的深度学习炼丹炉
+",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目录"><span class="post-toc-number">1.</span> <span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#流程命令总览"><span class="post-toc-number">2.</span> <span class="post-toc-text">流程命令总览</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#详细步骤记录"><span class="post-toc-number">3.</span> <span class="post-toc-text">详细步骤记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前期准备"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#以管理员权限运行"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">以管理员权限运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从DockerHub仓库下载一个深度学习作业系统的映像档"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">从DockerHub仓库下载一个深度学习作业系统的映像档</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#显示本机已有的映像档"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">显示本机已有的映像档</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看目标端口占用-为下一步配置容器内的SSH作准备"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">查看目标端口占用 为下一步配置容器内的SSH作准备</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始配置"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">开始配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新建docker-container"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">新建docker container</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#守护态执行-后台运行方式新建容器"><span class="post-toc-number">3.2.1.1.</span> <span class="post-toc-text">守护态执行/后台运行方式新建容器</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Docker-Tips"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">Docker Tips</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置SSH服务"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">配置SSH服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#先对目标容器环境进行更新"><span class="post-toc-number">3.2.3.1.</span> <span class="post-toc-text">先对目标容器环境进行更新</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Docker换源三部曲"><span class="post-toc-number">3.2.3.2.</span> <span class="post-toc-text">Docker换源三部曲</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在容器内安装openssh-server并配置用户名和密码"><span class="post-toc-number">3.2.3.3.</span> <span class="post-toc-text">在容器内安装openssh-server并配置用户名和密码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#验证配置"><span class="post-toc-number">3.2.3.4.</span> <span class="post-toc-text">验证配置</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本地Pycharm配置"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">本地Pycharm配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置过程"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">配置过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大致配置过程如下："><span class="post-toc-number">3.3.1.1.</span> <span class="post-toc-text">大致配置过程如下：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#具体过程截图说明："><span class="post-toc-number">3.3.1.2.</span> <span class="post-toc-text">具体过程截图说明：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#从启动页进入设置（任何项目可用）"><span class="post-toc-number">3.3.1.2.1.</span> <span class="post-toc-text">从启动页进入设置（任何项目可用）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#从项目页进入设置（默认仅配置项目可见）"><span class="post-toc-number">3.3.1.2.2.</span> <span class="post-toc-text">从项目页进入设置（默认仅配置项目可见）</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如有错误或疑问，烦请评论指出"><span class="post-toc-number">4.</span> <span class="post-toc-text">如有错误或疑问，烦请评论指出</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/images/thumbnail_img/docker&gpu.png)">
+    
+            <p class="article-headline-p">
+                『深度』使用Docker搭建远程解释器
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/images/avatar_github.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>IDforHYIT</strong>
+        <span>6月 01, 2019</span>
+    </div>
+
+    <p style="font-family:verdana;font: size 8px;"> <span id="busuanzi_container_page_pv"> <img src="https://material.io/tools/icons/static/icons/outline-remove_red_eye-24px.svg" width="18" alt="本页面访问量"> <b><span id="busuanzi_value_page_pv"></span></b></span></p>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC0ElEQVR42u3aQW4CMQwFUO5/6XZbiTL87yAxSl5WiE4nfmFh2c7j58j1wMbGxsbGxsbGxr4l+xGv5+f/fvP8zlfv/yegy7e9ej6PGRsbG/sEdrJNjrw+oPxYk2NKYsbGxsY+h30dSoJ5s/FoJT9DlFaxsbGxsePEliek66NJih9sbGxs7FkCu05IyWG1ZQY2NjY29qeaSnnDKClU2sHD13pp2NjY2Ldnt4PeO3z+wnwbGxsb+5bs2cqPo31bMh4YxoyNjY29KXtlHJs3jJJv8oFu2xTDxsbGPoHdJoy2VdS2ovJBQnI02NjY2Huz2+3bllMbdBtb/jZsbGzsE9j5iDcpG9oEmf91dkDY2NjY57Dbizht4ZE0s3Je/vNgY2Nj781ug85TXX4pM7mUs1TSYGNjY2/KbrfPy5K8YFhvYy3dOcXGxsbeiJ0jZ4VEng7bw8LGxsY+mZ201/PPbUJqC49ZnNjY2NinsVeSSjuITY4pH2O8iRYbGxt7U/b6sLYeuC5Q24SKjY2NfQ47LxjagKLUUrao2kiwsbGx92Z/9jpO8mReSDxGq6jAsLGxsbdgr1zHWSkSVlpLs+ExNjY29jnslRBnw4ZZWqqLE2xsbOyt2SstoVmyaZPi7MfAxsbGPo290tCZlSKzA80TGzY2NvY57DwNtEkrHwO3x9TGjI2NjX0OO28tJWPg9WOqS45Xu2NjY2Nvzc6Dy4e7eXEyWx9uKmFjY2NvwW5b859NYNcJcpbMsLGxsU9gz9JG27hfSV3txZ1oPICNjY29EXs2ym15sze3I+Q3JRM2Njb21uxZ0spLi3ZI0O6SiLCxsbFPYM+GvkkTKvnfNu3Vx4GNjY2NPXo+TzkrFzGjUQc2NjY2drnNSvmRg5P2FjY2NvY57DzlzAbA+SBhvf2EjY2NfRp7Nuhtm/XrA4N2L2xsbOwT2OcsbGxsbGxsbGxs7NusX6aySUtDSAOKAAAAAElFTkSuQmCC">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+
+
+    <!-- share --> 
+    <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">share</i>
+            <span class="visuallyhidden">show menu</span>
+    </button>
+        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
+                            
+            
+
+            
+                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&pic=https://idforhyit.github.io/images/panda_1_16x16.png&searchPic=false&style=simple" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到微博
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&via=IDforHYIT" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Twitter
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Facebook
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://plus.google.com/share?url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Google+
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://idforhyit.github.io&title=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 LinkedIn
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=IDforHYIT&#39;s blogs&title=IDforHYIT&#39;s blogs&summary=个人博客&pics=https://idforhyit.github.io/images/panda_1_16x16.png&url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 QQ
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="https://telegram.me/share/url?url=https://idforhyit.github.io&text=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 Telegram
+                    </li>
+                </a>
+            
+        </ul>
+
+
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Docker/">Docker</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/GPU/">GPU</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Pycharm/">Pycharm</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/深度/">深度</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>PyCharm+Docker：打造最舒适的深度学习炼丹炉</p>
+</blockquote>
+<a id="more"></a>
+<p>当你配置完成之后，你将能在本地PyCharm IDE上使用远程服务器的Python解释器和环境进行调试和运行，同时能够很方便的将代码在本地和服务器上进行同步。</p>
+<blockquote>
+<p>本篇文章纯手码，请勿转载。文章内容来自博主的亲自操作，查阅了很多资料，但作为菜鸟一枚，肯定还存在许多错误，大佬轻喷，如见错误或操作不一致的地方，烦请在<a href="https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/">本篇博客地址</a>的文章底部评论指出，<a href="#如有错误或疑问，烦请评论指出">戳我</a>直达。</p>
+</blockquote>
+<p><img src="/images/Docker-Notes/1559396293846.png" alt="1559396293846"></p>
+<center>☝PyCharm+Docker的远程解释器效果图</center>
+
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目录"><span class="post-toc-number">1.</span> <span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#流程命令总览"><span class="post-toc-number">2.</span> <span class="post-toc-text">流程命令总览</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#详细步骤记录"><span class="post-toc-number">3.</span> <span class="post-toc-text">详细步骤记录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前期准备"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#以管理员权限运行"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">以管理员权限运行</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从DockerHub仓库下载一个深度学习作业系统的映像档"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">从DockerHub仓库下载一个深度学习作业系统的映像档</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#显示本机已有的映像档"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">显示本机已有的映像档</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查看目标端口占用-为下一步配置容器内的SSH作准备"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">查看目标端口占用 为下一步配置容器内的SSH作准备</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开始配置"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">开始配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#新建docker-container"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">新建docker container</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#守护态执行-后台运行方式新建容器"><span class="post-toc-number">3.2.1.1.</span> <span class="post-toc-text">守护态执行/后台运行方式新建容器</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Docker-Tips"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">Docker Tips</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置SSH服务"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">配置SSH服务</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#先对目标容器环境进行更新"><span class="post-toc-number">3.2.3.1.</span> <span class="post-toc-text">先对目标容器环境进行更新</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Docker换源三部曲"><span class="post-toc-number">3.2.3.2.</span> <span class="post-toc-text">Docker换源三部曲</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#在容器内安装openssh-server并配置用户名和密码"><span class="post-toc-number">3.2.3.3.</span> <span class="post-toc-text">在容器内安装openssh-server并配置用户名和密码</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#验证配置"><span class="post-toc-number">3.2.3.4.</span> <span class="post-toc-text">验证配置</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本地Pycharm配置"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">本地Pycharm配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#配置过程"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">配置过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#大致配置过程如下："><span class="post-toc-number">3.3.1.1.</span> <span class="post-toc-text">大致配置过程如下：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#具体过程截图说明："><span class="post-toc-number">3.3.1.2.</span> <span class="post-toc-text">具体过程截图说明：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#从启动页进入设置（任何项目可用）"><span class="post-toc-number">3.3.1.2.1.</span> <span class="post-toc-text">从启动页进入设置（任何项目可用）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#从项目页进入设置（默认仅配置项目可见）"><span class="post-toc-number">3.3.1.2.2.</span> <span class="post-toc-text">从项目页进入设置（默认仅配置项目可见）</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+
+<h1 id="流程命令总览"><a href="#流程命令总览" class="headerlink" title="流程命令总览"></a>流程命令总览</h1><pre><code class="bash"># 以管理员权限运行
+su root
+[password]
+
+# 从DockerHub仓库下载一个深度学习作业系统的映像档
+docker pull hub-mirror.c.163.com/ufoym/deepo
+### 这里采用deepo，她几乎支持所有的深度学习框架，可以帮助俺们快速搭建一个包含TensorFlow、PyTorch、DarkNet等深度学习的研究环境。这里用的是CPU镜像，也可以采用GPU版本的 ###
+
+# 显示本机已有的映像档
+sudo docker images
+
+# 查看目标端口占用 为下一步配置容器内的SSH作准备
+lsof -i
+
+# 新建docker container
+# sudo nvidia-docker run -it -p 5592:5592 -p 5593:5593 -p 8022:22 --name=&quot;RemoteInterpreter_GPU&quot; -v /host/data:/data -v /host/config:/config -v ~/workspace/idforhyit/remote_workspace:/workspace/idforhyit/remote_workspace ufoym/deepo:cpu /bin/bash
+### PS. 一定要留一个端口映射到容器22端口，因为SFTP默认使用22端口） ###
+
+# 守护态执行/后台运行
+sudo docker run -d -it -p 5592:5592 -p 5593:5593 -p 8022:22 --name=&quot;RemoteInterpreter_GPU_d&quot; -v /host/data:/data -v /host/config:/config -v ~/workspace/idforhyit/remote_workspace:/workspace/idforhyit/remote_workspace ufoym/deepo:cpu /bin/bash 
+# 获取容器的输出信息
+docker container logs RemoteInterpreter_GPU_d
+# 进入容器 推荐用docker exec方式
+docker exec -it RemoteInterpreter_GPU_d bash
+
+# 查看已经安装包的命令以及版本
+pip freeze
+# 显示本机已有的容器（包括停止运行的）
+docker ps -a
+# 停用并删除全部容器：
+docker stop $(docker ps -q) &amp; docker rm $(docker ps -aq)
+
+# 配置SSH服务
+apt update
+apt install -y openssh-server
+mkdir /var/run/sshd
+echo &quot;user:password&quot; | chpasswd    # [用户名:密码] 按需设置并牢记
+sed -i &#39;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#39; /etc/ssh/sshd_config
+sed &#39;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#39; -i /etc/pam.d/sshd
+echo &quot;export VISIBLE=now&quot; &gt;&gt; /etc/profile
+# 修改/etc/ssh/sshd-config以使可远程密码登录docker的root账户
+### 属性值
+### PermitRootLogin yes
+### PasswordAuthentication yes
+service ssh restart    # 重启SSH激活配置
+exit    #退出容器
+sudo docker port RemoteInterpreter_GPU_d 22    # 0.0.0.0:8022 正确配置后的输出
+ssh IDforHYIT@192.168.68.131 -p 8022    # 过程中确认的密码是你前面配置SSH设置的
+
+</code></pre>
+<pre><code class="bash"># Docker换源
+
+# 复制源文件备份，以防万一
+cp /etc/apt/sources.list /etc/apt/sources.list.bak
+# 查看新版本信息
+lsb_release -c    
+### 如果不是bionic 就将下列地址中的版本换为对应的 ###
+```
+Ubuntu 12.04 (LTS)代号为precise, Ubuntu 14.04 (LTS)代号为trusty,
+Ubuntu 15.04 代号为vivid, Ubuntu 15.10 代号为wily, Ubuntu 16.04 (LTS)代号为xenial
+```
+# 编辑源列表文件
+vim /etc/apt/sources.list
+# 将原有的内容注释掉，添加以下内容（或者你把里面内容修改成下面的就可以，但是不能有除了以下内容的有效内容）
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+</code></pre>
+<hr>
+<h1 id="详细步骤记录"><a href="#详细步骤记录" class="headerlink" title="详细步骤记录"></a>详细步骤记录</h1><blockquote>
+<p>全文纯手码</p>
+</blockquote>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><h3 id="以管理员权限运行"><a href="#以管理员权限运行" class="headerlink" title="以管理员权限运行"></a>以管理员权限运行</h3><pre><code class="bash">su root
+[password]
+</code></pre>
+<h3 id="从DockerHub仓库下载一个深度学习作业系统的映像档"><a href="#从DockerHub仓库下载一个深度学习作业系统的映像档" class="headerlink" title="从DockerHub仓库下载一个深度学习作业系统的映像档"></a>从DockerHub仓库下载一个深度学习作业系统的映像档</h3><pre><code class="bash">docker pull hub-mirror.c.163.com/ufoym/deepo
+# 采用国内网易163镜像源 加快Pull速度
+</code></pre>
+<p><img src="/images/Docker-Notes/1559273071258.png" alt="1559273071258"></p>
+<p><img src="/images/Docker-Notes/1559273149719.png" alt="1559273149719"></p>
+<p><strong>Note:</strong> 这里采用<code>deepo</code>，它几乎支持所有的深度学习框架，可以帮助俺们快速搭建一个包含<code>TensorFlow</code>、<code>PyTorch</code>、<code>DarkNet</code>等深度学习的研究环境。这里用的是GPU版本的Docker Image</p>
+<h3 id="显示本机已有的映像档"><a href="#显示本机已有的映像档" class="headerlink" title="显示本机已有的映像档"></a>显示本机已有的映像档</h3><pre><code class="bash">sudo docker images
+</code></pre>
+<p><img src="/images/Docker-Notes/1559273355816.png" alt="1559273355816"></p>
+<h3 id="查看目标端口占用-为下一步配置容器内的SSH作准备"><a href="#查看目标端口占用-为下一步配置容器内的SSH作准备" class="headerlink" title="查看目标端口占用 为下一步配置容器内的SSH作准备"></a>查看目标端口占用 为下一步配置容器内的SSH作准备</h3><pre><code class="bash">netstat -tunlp | grep 8022    # 8022是拟启用端口，用来转发docker容器SFTP的22端口
+</code></pre>
+<ul>
+<li>Linux系统中，没返回信息就是最好的信息，2333</li>
+</ul>
+<p><img src="/images/Docker-Notes/1559273744353.png" alt="1559273744353"></p>
+<ul>
+<li>端口占用返回界面，以查看80端口使用情况为例，返回建立连接的程序及监听状态</li>
+</ul>
+<p><img src="/images/Docker-Notes/1559273933014.png" alt="1559273933014"></p>
+<hr>
+<h2 id="开始配置"><a href="#开始配置" class="headerlink" title="开始配置"></a>开始配置</h2><blockquote>
+<p>命令参考：<a href="https://hub.docker.com/r/ufoym/deepo#GPU" target="_blank" rel="noopener">https://hub.docker.com/r/ufoym/deepo#GPU</a></p>
+<p><a href="https://www.runoob.com/docker/docker-command-manual.html" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-command-manual.html</a></p>
+</blockquote>
+<h3 id="新建docker-container"><a href="#新建docker-container" class="headerlink" title="新建docker container"></a>新建docker container</h3><pre><code class="bash">### PS. 一定要留一个端口映射到容器22端口，因为SFTP默认使用22端口） ###
+</code></pre>
+<h4 id="守护态执行-后台运行方式新建容器"><a href="#守护态执行-后台运行方式新建容器" class="headerlink" title="守护态执行/后台运行方式新建容器"></a>守护态执行/后台运行方式新建容器</h4><pre><code class="bash">sudo nvidia-docker run -d -it -p 5592:5592 -p 5593:5593 -p 8022:22 --name=&quot;RemoteInterpreter_GPU_d&quot; -v /host/data:/data -v /host/config:/config -v ~/MaSiwei/workspace/idforhyit/remote_workspace:/workspace/idforhyit/remote_workspace --ipc=host ufoym/deepo bash 
+# or
+nvidia-docker run -d -it -p 5592:5592 -p 5593:5593 -p 8022:22 --name=&quot;RemoteInterpreter_GPU_d&quot; -v /host/data:/data -v /host/config:/config -v ~/workspace/idforhyit/remote_workspace:/workspace/idforhyit/remote_workspace ufoym/deepo bash 
+</code></pre>
+<p><img src="/images/Docker-Notes/1559279550061.png" alt="1559279550061"></p>
+<blockquote>
+<p>新建的docker容器，端口映射，容器名，镜像和路径映射这些换成你自己的就行，但是一定要留一个端口映射到容器22端口，因为SFTP默认使用22端口。</p>
+</blockquote>
+<hr>
+<h3 id="Docker-Tips"><a href="#Docker-Tips" class="headerlink" title="Docker Tips"></a>Docker Tips</h3><ul>
+<li>守护态执行新建后获取容器的输出信息</li>
+</ul>
+<pre><code class="bash">docker container logs RemoteInterpreter_GPU_d
+</code></pre>
+<ul>
+<li><p><strong>进入容器</strong> （非启动）</p>
+<blockquote>
+<p>推荐用docker exec方式</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="bash">docker exec -it RemoteInterpreter_GPU_d bash
+</code></pre>
+<p><img src="/images/Docker-Notes/1559279747225.png" alt="1559279747225"></p>
+<ul>
+<li><p>查看已经安装包的命令以及版本</p>
+<blockquote>
+<p>进入容器后使用，查看一下<code>deepo</code>的已有环境</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="bash">pip freeze
+</code></pre>
+<p><img src="/images/Docker-Notes/1559279852360.png" alt="1559279852360"></p>
+<blockquote>
+<p>下面为<code>DockerHub</code>中<code>ufoym/deepo</code>的已有环境内容，可以看到默认已经带了比较全面的机器学习的开发框架（<code>TensorFlow</code>，<code>PyTorch</code>，<code>Keras</code>，<code>scikit-learn</code>），这个容器对于深度学习科研实验来说，已经达到了开箱即用的程度，不然自己配置会很麻烦。另外，因为<code>DockerHub</code>开源，镜像安全性也是有一定保障的。</p>
+<p>Docker，懒癌患者的福音。</p>
+</blockquote>
+<pre><code class="bash">root@453b0e9a71c9:/# pip freeze
+absl-py==0.7.1
+astor==0.7.1
+backcall==0.1.0
+certifi==2019.3.9
+chainer==5.4.0
+chardet==3.0.4
+cloudpickle==0.8.1
+cntk-gpu==2.7
+contextlib2==0.5.5
+cupy==5.4.0
+cycler==0.10.0
+Cython==0.29.7
+decorator==4.4.0
+dm-sonnet==1.32
+enum34==1.1.6
+fastrlock==0.4
+filelock==3.0.10
+future==0.17.1
+gast==0.2.2
+google-pasta==0.1.5
+graphviz==0.10.1
+grpcio==1.20.0
+h5py==2.9.0
+idna==2.8
+imageio==2.5.0
+ipython==7.4.0
+ipython-genutils==0.2.0
+jedi==0.13.3
+Keras==2.2.4
+Keras-Applications==1.0.7
+Keras-Preprocessing==1.0.9
+kiwisolver==1.0.1
+Lasagne==0.2.dev1
+leveldb==0.194
+Mako==1.0.9
+Markdown==3.1
+MarkupSafe==1.1.1
+matplotlib==3.0.3
+mxnet-cu100==1.4.0.post0
+networkx==2.3
+nose==1.3.7
+numpy==1.16.3
+onnx==1.5.0
+pandas==0.24.2
+parso==0.4.0
+pexpect==4.7.0
+pickleshare==0.7.5
+Pillow==6.0.0
+prompt-toolkit==2.0.9
+protobuf==3.7.1
+ptyprocess==0.6.0
+Pygments==2.3.1
+pygobject==3.26.1
+pygpu==0.7.6
+pyparsing==2.4.0
+python-apt==1.6.3+ubuntu1
+python-dateutil==2.8.0
+python-distutils-extra==2.39
+python-gflags==3.1.2
+pytz==2019.1
+PyWavelets==1.0.3
+PyYAML==5.1
+requests==2.21.0
+scikit-image==0.15.0
+scikit-learn==0.20.3
+scipy==1.2.1
+semantic-version==2.6.0
+six==1.12.0
+tb-nightly==1.14.0a20190424
+tensorflow-estimator-2.0-preview==1.14.0.dev2019042300
+tensorflow-probability==0.6.0
+termcolor==1.1.0
+tf-nightly-gpu-2.0-preview==2.0.0.dev20190424
+Theano==1.0.4+unknown
+torch-nightly==1.1.0.dev20190424
+torchvision-nightly==0.2.3
+tqdm==4.31.1
+traitlets==4.3.2
+typing==3.6.6
+typing-extensions==3.7.2
+urllib3==1.24.2
+wcwidth==0.1.7
+Werkzeug==0.15.2
+wrapt==1.11.1
+</code></pre>
+<ul>
+<li><strong>退出容器</strong>（非终止）</li>
+</ul>
+<pre><code class="bash">exit
+# or 
+Ctrl+D
+</code></pre>
+<ul>
+<li><strong>显示本机已有的容器（正在运行的）</strong></li>
+</ul>
+<pre><code class="bash">docker ps
+</code></pre>
+<p><img src="/images/Docker-Notes/1559280517128.png" alt="1559280517128"></p>
+<ul>
+<li>显示本机已有的容器（包括停止运行的）</li>
+</ul>
+<pre><code class="bash">docker ps -a
+</code></pre>
+<p><img src="/images/Docker-Notes/1559280576654.png" alt="1559280576654"></p>
+<ul>
+<li><p><strong>终止容器</strong></p>
+<blockquote>
+<p>使用<code>docker stop $CONTAINER_ID</code>来终止一个运行中的容器。并且可以使用<code>docker ps -a</code>来看终止状态的容器。</p>
+<p>终止状态的容器，可以使用<code>docker start</code>来重新启动。</p>
+</blockquote>
+</li>
+</ul>
+<pre><code class="bash">docker stop [Name或者ID]
+</code></pre>
+<ul>
+<li>删除容器（Container）</li>
+</ul>
+<pre><code class="bash">docker rm [Name或者ID]
+
+# 
+docker stop RemoteInterpreter_GPU_d
+docker rm RemoteInterpreter_GPU_d
+</code></pre>
+<ul>
+<li><p>删除镜像（Image）</p>
+<blockquote>
+<p>一般不删除镜像，毕竟十几个G，重下也麻烦。</p>
+<p><strong>删除前务必保证该镜像的所有实例容器（Container）全部<code>stop</code>停止和删除</strong>，否者会很麻烦。</p>
+<p>需要注意删除镜像和容器的命令不一样。 <code>docker rmi ID</code>  ,其中 容器(<code>rm</code>)  和 镜像(<code>rmi</code>)。</p>
+</blockquote>
+<pre><code class="bash"># 查询镜像，拿到欲删除的`IMAGE ID`
+docker images
+# 查询容器，拿到镜像实例容器的`CONTATNER ID`
+docker ps -a
+# 先删除容器，如果容器正在运行，先用`docker stop`停止
+docker rm [CONTATNER ID]
+docker ps -a    # 查看容器是否删除成功
+# 再删除镜像
+docker rmi [IMAGE ID]
+</code></pre>
+<hr>
+</li>
+</ul>
+<h3 id="配置SSH服务"><a href="#配置SSH服务" class="headerlink" title="配置SSH服务"></a>配置SSH服务</h3><blockquote>
+<p><strong>配置部分命令在目标容器内进行</strong></p>
+</blockquote>
+<h4 id="先对目标容器环境进行更新"><a href="#先对目标容器环境进行更新" class="headerlink" title="先对目标容器环境进行更新"></a>先对目标容器环境进行更新</h4><pre><code class="bash">docker exec -it RemoteInterpreter_GPU_d bash    # 如已在容器内请忽略本条
+apt update
+</code></pre>
+<p><img src="/images/Docker-Notes/1559281915996.png" alt="1559281915996"></p>
+<hr>
+<blockquote>
+<p>获更新失败解决参考</p>
+</blockquote>
+<h4 id="Docker换源三部曲"><a href="#Docker换源三部曲" class="headerlink" title="Docker换源三部曲"></a>Docker换源三部曲</h4><ul>
+<li>官方源国内不好使，那咱就换源，盘他~</li>
+</ul>
+<ol>
+<li><p>复制源文件备份，以防万一</p>
+<pre><code class="bash">cp /etc/apt/sources.list /etc/apt/sources.list.bak
+</code></pre>
+</li>
+</ol>
+<ol start="2">
+<li><p>查看新版本信息</p>
+<pre><code class="bash">lsb_release -c
+</code></pre>
+</li>
+</ol>
+<p>   <img src="/images/Docker-Notes/1559282969721.png" alt="1559282969721"></p>
+<ul>
+<li><strong>如果不是<code>bionic</code>就将之后镜像源地址中的版本代号部分换为对应的版本代号</strong><ul>
+<li>Ubuntu 12.04 (LTS)代号为<code>precise</code></li>
+<li>Ubuntu 14.04 (LTS)代号为<code>trusty</code></li>
+<li>Ubuntu 15.04 代号为<code>vivid</code></li>
+<li>Ubuntu 15.10 代号为<code>wily</code></li>
+<li>Ubuntu 16.04 (LTS)代号为<code>xenial</code></li>
+<li>Ubuntu 18.04 (LTS)代号为<code>bionic</code></li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>编辑源列表文件</li>
+</ol>
+<pre><code class="bash">vim /etc/apt/sources.list
+</code></pre>
+<blockquote>
+<p>将原有的有效行前面添加<code>#</code>注释掉，添加以下内容（或者你把里面内容修改成下面的就可以，但是不能有除了以下内容的有效内容）</p>
+</blockquote>
+<ul>
+<li>Vim使用方法，防对命令行操作不熟悉的童鞋。笔记本键盘童鞋，如果操作失败，想想<code>Fn</code>键的作用。<ul>
+<li><code>Insert</code> ，进行<code>插入</code>方式的编辑文本文件</li>
+<li><code>Shift</code> +  <code>Insert</code> ，进行<code>粘贴</code>粘贴板中的文本内容<ul>
+<li>如果和博主使用的Dock镜像不一样，注意将文本中<code>bionic</code>替换为对应版本的代号</li>
+</ul>
+</li>
+<li><code>ESC</code> ==&gt; <code>Shift</code>+ <code>;</code>（即<code>:</code>） ==&gt; <code>wq</code>，<code>保存修改并退出</code>编辑</li>
+</ul>
+</li>
+</ul>
+<pre><code class="bash">deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+</code></pre>
+<p><img src="/images/Docker-Notes/1559285120689.png" alt="1559285120689"></p>
+<blockquote>
+<blockquote>
+<p><em>开启行号</em>：<code>:</code> + <code>set number</code></p>
+</blockquote>
+<p>更多vi/vim命令详见：<a href="https://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener">https://www.runoob.com/linux/linux-vim.html</a></p>
+</blockquote>
+<pre><code class="bash"># 国内源
+deb http://cn.archive.ubuntu.com/ubuntu bionic main multiverse restricted universe
+deb http://cn.archive.ubuntu.com/ubuntu bionic-updates main multiverse restricted universe
+deb http://cn.archive.ubuntu.com/ubuntu bionic-security main multiverse restricted universe
+deb http://cn.archive.ubuntu.com/ubuntu bionic-proposed main multiverse restricted universe
+
+#添加阿里源
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+##中科大源
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+
+##163源
+deb http://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+##清华源
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+</code></pre>
+<hr>
+<h4 id="在容器内安装openssh-server并配置用户名和密码"><a href="#在容器内安装openssh-server并配置用户名和密码" class="headerlink" title="在容器内安装openssh-server并配置用户名和密码"></a>在容器内安装<code>openssh-server</code>并配置用户名和密码</h4><pre><code class="bash">apt update
+apt install -y openssh-server
+mkdir /var/run/sshd
+echo &quot;user:password&quot; | chpasswd    # [用户名:密码] 按需设置并牢记
+sed -i &#39;s/PermitRootLogin prohibit-password/PermitRootLogin yes/&#39; /etc/ssh/sshd_config
+sed &#39;s@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g&#39; -i /etc/pam.d/sshd
+echo &quot;export VISIBLE=now&quot; &gt;&gt; /etc/profile
+</code></pre>
+<ul>
+<li><p>修改<code>sshd-config</code>属性值</p>
+<blockquote>
+<p>修改<code>/etc/ssh/sshd-config</code>以使可远程密码登录docker的root账户</p>
+</blockquote>
+<pre><code class="bash">vi /etc/ssh/sshd-config
+</code></pre>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">NAME</th>
+<th style="text-align:center">KEY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>PermitRootLogin</code></td>
+<td style="text-align:center"><code>yes</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>PasswordAuthentication</code></td>
+<td style="text-align:center"><code>yes</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="验证配置"><a href="#验证配置" class="headerlink" title="验证配置"></a>验证配置</h4><pre><code class="bash">service ssh restart    # 重启SSH激活配置
+exit    #退出容器
+sudo docker port RemoteInterpreter_GPU_d 22    # 0.0.0.0:8022 正确配置后的输出
+ssh IDforHYIT@172.20.1.100 -p 8022    # 过程中确认的密码是你前面配置SSH设置的
+</code></pre>
+<blockquote>
+<p>宿主机的IP地址可用<code>ifconfig</code>获得，按照博主几个虚拟机来瞎测试来总结的经验，一般是第一个以<code>en</code>开头的网卡就是本机对外IP地址。</p>
+</blockquote>
+<hr>
+<h2 id="本地Pycharm配置"><a href="#本地Pycharm配置" class="headerlink" title="本地Pycharm配置"></a>本地Pycharm配置</h2><blockquote>
+<p>社区版无远程解释器功能，<strong>请用专业版</strong>。激活教程请在本博内搜索<code>Jetbrain</code>。</p>
+</blockquote>
+<hr>
+<p><u>因上一步服务器Docker内的SSH配置中因服务器安全设置等原因，禁用了Docker的端口转发，Docker内无法连接外网，故本步骤用之前虚拟机搭建的IP地址进行配置，除了IP地址、账号密码等因配置原因不一样外，其他无异。</u></p>
+<hr>
+<h3 id="配置过程"><a href="#配置过程" class="headerlink" title="配置过程"></a>配置过程</h3><h4 id="大致配置过程如下："><a href="#大致配置过程如下：" class="headerlink" title="大致配置过程如下："></a>大致配置过程如下：</h4><ul>
+<li>从启动页进入设置（<strong>任何项目可用</strong>）</li>
+</ul>
+<p><code>Pycharm启动页</code> —&gt; <code>Configure</code> —&gt; <code>Setting</code> —&gt; <code>Project Interpreter</code> —&gt; <code>小齿轮按钮</code> —&gt; <code>Add...</code> —&gt; <code>SSH Interpreter</code> —&gt; <code>New server configuration</code> —&gt; <code>Host</code> —&gt; <code>Port</code> —&gt; <code>Username</code> —&gt; <code>Next</code> —&gt; <code>Password</code> —&gt; <code>Next</code> —&gt; <code>Interpreter</code> —&gt; <code>Finish</code></p>
+<ul>
+<li>从项目页进入设置（<strong>默认仅配置项目可见</strong>）</li>
+</ul>
+<p><code>菜单栏</code> —&gt;  <code>File</code> —&gt; <code>Settings...</code> —&gt; <code>Project:（项目名）</code> —&gt; <code>Project Interpreter</code> —&gt; <code>小齿轮按钮</code> —&gt; <code>Add...</code> —&gt; <code>SSH Interpreter</code> —&gt; <code>New server configuration</code> —&gt; <code>Host</code> —&gt; <code>Port</code> —&gt; <code>Username</code> —&gt; <code>Next</code> —&gt; <code>Password</code> —&gt; <code>Next</code> —&gt; <code>Interpreter</code> —&gt; <code>Finish</code></p>
+<h4 id="具体过程截图说明："><a href="#具体过程截图说明：" class="headerlink" title="具体过程截图说明："></a>具体过程截图说明：</h4><h5 id="从启动页进入设置（任何项目可用）"><a href="#从启动页进入设置（任何项目可用）" class="headerlink" title="从启动页进入设置（任何项目可用）"></a>从启动页进入设置（任何项目可用）</h5><ol>
+<li><code>Pycharm启动页</code> —&gt; <code>Configure</code> —&gt; <code>Setting</code> </li>
+</ol>
+<p><img src="/images/Docker-Notes/1559389787719.png" alt="1559389787719"></p>
+<ol start="2">
+<li><code>Project Interpreter</code> —&gt; <code>小齿轮按钮</code> —&gt; <code>Add...</code> </li>
+</ol>
+<p><img src="/images/Docker-Notes/1559390122907.png" alt="1559390122907"></p>
+<ol start="3">
+<li><p><code>SSH Interpreter</code> —&gt; <code>New server configuration</code> —&gt; <code>填入上一步SSH配置中获得的Host地址</code> —&gt; <code>Port输入之前新建Docker时设置的22端口的转发端口</code> —&gt; <code>Username</code> —&gt; <code>Next</code> </p>
+<blockquote>
+<p><code>Host</code>为宿主机的IP地址，可用<code>ifconfig</code>命令获得，之前说过了</p>
+<p><code>Port</code>转发端口为之前<code>新建Docker</code>时设置的宿主机端口22的转发端口</p>
+<blockquote>
+<p><code>docker run  … -p xxx:22 …</code> 命令中的<code>xxx</code>即是配置的转发端口</p>
+</blockquote>
+<p>本步及下一步的账号密码请填入你在SSH配置中用<code>echo &quot;user:password&quot; | chpasswd</code> 命令配置的<code>[用户名:密码]</code></p>
+</blockquote>
+</li>
+</ol>
+<p><img src="/images/Docker-Notes/1559390673931.png" alt="1559390673931"></p>
+<ol start="4">
+<li><p><code>Password</code>—&gt; <code>Next</code> </p>
+<p>建议<code>Save password</code> 复选框选中</p>
+</li>
+</ol>
+<p><img src="/images/Docker-Notes/1559392521390.png" alt="1559392521390"></p>
+<ol start="5">
+<li><code>Interpreter</code> 浏览你目标使用的远程解释器的位置，一般是 <code>/usr/bin/python</code> 或 <code>/usr/bin/python3</code> —&gt; <code>Finish</code></li>
+</ol>
+<p><img src="/images/Docker-Notes/1559391381695.png" alt="1559391381695"></p>
+<h5 id="从项目页进入设置（默认仅配置项目可见）"><a href="#从项目页进入设置（默认仅配置项目可见）" class="headerlink" title="从项目页进入设置（默认仅配置项目可见）"></a>从项目页进入设置（默认仅配置项目可见）</h5><ol>
+<li><code>菜单栏</code> —&gt;  <code>File</code> —&gt; <code>Settings...</code> </li>
+</ol>
+<p><img src="/images/Docker-Notes/1559393753721.png" alt="1559393753721"></p>
+<ol start="2">
+<li><code>Project:（项目名）</code> —&gt; <code>Project Interpreter</code> —&gt; <code>小齿轮按钮</code> —&gt; <code>Add...</code> </li>
+</ol>
+<p><img src="/images/Docker-Notes/1559394094306.png" alt="1559394094306"></p>
+<ol start="3">
+<li><p><code>SSH Interpreter</code> —&gt; <code>New server configuration</code> —&gt; <code>填入上一步SSH配置中获得的Host地址</code> —&gt; <code>Port输入之前新建Docker时设置的22端口的转发端口</code> —&gt; <code>Username</code> —&gt; <code>Next</code> </p>
+<blockquote>
+<p><code>Host</code>为宿主机的IP地址，可用<code>ifconfig</code>命令获得，之前说过了</p>
+<p><code>Port</code>转发端口为之前<code>新建Docker</code>时设置的宿主机端口22的转发端口</p>
+<blockquote>
+<p><code>docker run  … -p xxx:22 …</code> 命令中的<code>xxx</code>即是配置的转发端口</p>
+</blockquote>
+<p>本步及下一步的账号密码请填入你在SSH配置中用<code>echo &quot;user:password&quot; | chpasswd</code> 命令配置的<code>[用户名:密码]</code></p>
+</blockquote>
+</li>
+</ol>
+<p><img src="/images/Docker-Notes/1559390673931.png" alt="1559390673931"></p>
+<ol start="4">
+<li><p><code>Password</code>—&gt; <code>Next</code> </p>
+<p>建议<code>Save password</code> 复选框选中</p>
+</li>
+</ol>
+<p><img src="/images/Docker-Notes/1559392521390.png" alt="1559392521390"></p>
+<ol start="5">
+<li><p><code>配置Interpreter</code> —&gt; <code>配置Sync folders</code>—&gt; <code>Finish</code></p>
+<blockquote>
+<p><code>Interpreter</code>是远程解释器的地址，一般是 <code>/usr/bin/python</code> 或 <code>/usr/bin/python3</code> </p>
+<p><code>Sync folders</code> 是远程解释器的项目存放目录，一般与之前创建Docker时用到的命令地址一样就可，也可点击文件夹图标，选定远程服务器的目录地址。这个地址是你代码的远程同步地址，项目运行时会同步你的代码到此目录，然后用远程解释器的算力进行运算。</p>
+</blockquote>
+</li>
+</ol>
+<p><img src="/images/Docker-Notes/1559394637555.png" alt="1559394637555"></p>
+<ol start="6">
+<li>配置完的效果及代码执行界面</li>
+</ol>
+<p><img src="/images/Docker-Notes/1559395404192.png" alt="1559395404192"></p>
+<p>点击<code>菜单栏</code> —&gt; <code>Tools</code> —&gt; <code>Deployment</code> —&gt; <code>Configuration..</code>可进一步配置。</p>
+<p>运行代码前，点击<code>菜单栏</code> —&gt; <code>Tools</code> —&gt; <code>Deployment</code> —&gt; <code>Upload to...</code> 或 <code>Ctrl+Alt+Shift+X</code>将代码同步到远程服务器的配置目录。</p>
+<p>最后，整个远程解释器执行代码时的界面如下图所示。代码执行不消耗本地资源，与本地孱弱的性能相比，远程服务器跑实验模型的时间大大缩短。如果学校或是有其他云平台的算力，能够拿到云平台的算力分配给俺们，还是比较美滋滋的，会节省很多时间。</p>
+<p><img src="/images/Docker-Notes/1559396293846.png" alt="1559396293846"></p>
+<h1 id="如有错误或疑问，烦请评论指出"><a href="#如有错误或疑问，烦请评论指出" class="headerlink" title="如有错误或疑问，烦请评论指出"></a>如有错误或疑问，烦请评论指出</h1><blockquote>
+<p>本篇文章纯手码，请勿转载。文章内容来自博主的亲自操作，查阅了很多资料，但作为菜鸟一枚，肯定还存在许多错误，大佬轻喷，如见错误或操作不一致的地方，烦请在<a href="https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/">本篇博客地址</a>的文章底部评论指出，会及时于本博文地址进行更正。</p>
+</blockquote>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons/" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/">https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODg1NC8xNTM4Mg==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2019/05/26/google-access-helper-Mod/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/side.jpg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/images/avatar_github.jpg" alt="IDforHYIT's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        idforhyit@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: idforhyit@qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://idforhyit.coding.me/GitBook/" target="_blank" title="GitBook">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">library_books</i>
+                        
+                        GitBook
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="http://idforhyit.orgfree.com/" target="_blank" title="Drive">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">cloud_queue</i>
+                        
+                        Drive
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Lab/">Lab<span class="sidebar_archives-count">9</span></a></li><li><a class="sidebar_archives-link" href="/categories/Others/">Others<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/备忘录/">备忘录<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/安利区/">安利区<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/搬运区/">搬运区<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/蓝桥杯/">蓝桥杯<span class="sidebar_archives-count">13</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">insert_photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">table_chart</i>
+                
+                Tags
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="http://144.34.236.154:34567/A:" title="Drive">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_queue</i>
+                
+                Drive
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">38</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+    <!-- Paradox Footer Left Section -->
+    <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/IDforHYIT/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+    <!--Copyright-->
+    <div id="copyright">
+        Copyright&nbsp;©&nbsp;1999&nbsp;-
+        <script type="text/javascript">var fd = new Date(); document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>
+        IDforHYIT's blogs
+        
+        <br>
+        
+        <a href="https://996.icu/#/zh_CN" rel="nofollow">996.ICU 备2333号-9527</a>
+        
+        
+
+
+        <!-- <script async src="busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+        <div>
+            <span id="busuanzi_container_site_uv">本站访客数为 <u><span id="busuanzi_value_site_uv"></span></u> 次
+                &nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+            <span id="busuanzi_container_site_pv">总访问量为 <u><span id="busuanzi_value_site_pv"></span></u> 人次
+        </span></span></div>
+    </div>
+
+    <!-- Paradox Footer Right Section -->
+
+    <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+    <!-- <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div> -->
+    <div class="mdl-mini-footer--right-section">
+        <div>
+            <center>
+                <div class="footer-develop-div">本页面由<a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>强力驱动</div>
+            </center>
+            <center>
+                <div class="footer-develop-div">Theme by <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>（Mod By IDforHYIT）</div>
+            </center>
+            <center>ღ( ´･ᴗ･` )比心</center>
+        </div>
+    </div>
+    
+</footer>
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    
+        <script>lsloader.load("sm_js","/js/smoothscroll.js?lOy/ACj5suSNi7ZVFVbpFQ==", true)</script>
+    
+
+
+
+<!-- Busuanzi -->
+
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- 
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  -->
+
+
+   
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
