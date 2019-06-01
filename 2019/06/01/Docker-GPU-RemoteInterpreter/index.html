@@ -247,7 +247,7 @@ PyCharm+Docker：打造最舒适的深度学习炼丹炉
 
     
         <meta property="article:published_time" content="Sat Jun 01 2019 21:29:00 GMT+0800">
-        <meta property="article:modified_time" content="Sun Jun 02 2019 00:01:29 GMT+0800">
+        <meta property="article:modified_time" content="Sun Jun 02 2019 00:50:51 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -270,7 +270,7 @@ PyCharm+Docker：打造最舒适的深度学习炼丹炉
     "mainEntityOfPage": "https://idforhyit.github.io/2019/06/01/Docker-GPU-RemoteInterpreter/index.html",
     "headline": "『深度』使用Docker搭建远程解释器",
     "datePublished": "Sat Jun 01 2019 21:29:00 GMT+0800",
-    "dateModified": "Sun Jun 02 2019 00:01:29 GMT+0800",
+    "dateModified": "Sun Jun 02 2019 00:50:51 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "IDforHYIT",
@@ -617,7 +617,7 @@ echo &quot;export VISIBLE=now&quot; &gt;&gt; /etc/profile
 service ssh restart    # 重启SSH激活配置
 exit    #退出容器
 sudo docker port RemoteInterpreter_GPU_d 22    # 0.0.0.0:8022 正确配置后的输出
-ssh IDforHYIT@192.168.68.131 -p 8022    # 过程中确认的密码是你前面配置SSH设置的
+ssh user@IPAddress -p 8022    # 过程中确认的密码是你前面配置SSH设置的
 
 </code></pre>
 <pre><code class="bash"># Docker换源
@@ -635,23 +635,14 @@ Ubuntu 15.04 代号为vivid, Ubuntu 15.10 代号为wily, Ubuntu 16.04 (LTS)代�
 vim /etc/apt/sources.list
 # 将原有的内容注释掉，添加以下内容（或者你把里面内容修改成下面的就可以，但是不能有除了以下内容的有效内容）
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
-
 deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
-
 deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
-
 deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
-
 deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
-
 deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
 </code></pre>
 <hr>
@@ -1037,7 +1028,7 @@ echo &quot;export VISIBLE=now&quot; &gt;&gt; /etc/profile
 <h4 id="验证配置"><a href="#验证配置" class="headerlink" title="验证配置"></a>验证配置</h4><pre><code class="bash">service ssh restart    # 重启SSH激活配置
 exit    #退出容器
 sudo docker port RemoteInterpreter_GPU_d 22    # 0.0.0.0:8022 正确配置后的输出
-ssh IDforHYIT@172.20.1.100 -p 8022    # 过程中确认的密码是你前面配置SSH设置的
+ssh user@IPAddress -p 8022    # 过程中确认的密码是你前面配置SSH设置的
 </code></pre>
 <blockquote>
 <p>宿主机的IP地址可用<code>ifconfig</code>获得，按照博主几个虚拟机来瞎测试来总结的经验，一般是第一个以<code>en</code>开头的网卡就是本机对外IP地址。</p>
