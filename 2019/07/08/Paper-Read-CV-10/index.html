@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+        <link rel="dns-prefetch" href="https://cdn-city.livere.com">
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            记•读CV文献 | 
+        
+        IDforHYIT&#39;s blogs
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/images/panda_1_16x16.png">
+    <link rel="icon" href="/images/panda_1_32x32.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="借着一个机会，读了一下近三年的计算机视觉的顶级会议发表的论文，共十篇哈，大部分是刚刚6月份的CVPR会议发表的，趁热乎的，看看CV领域的学术界最近都在这块捯饬啥。">
+    <meta name="keywords" content="Blog,Paper">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="IDforHYIT&#39;s blogs">
+    <meta name="msapplication-starturl" content="https://idforhyit.github.io/2019/07/08/Paper-Read-CV-10/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="IDforHYIT&#39;s blogs">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/images/panda_1_32x32.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://idforhyit.github.io/2019/07/08/Paper-Read-CV-10/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="记•读CV文献 | IDforHYIT&#39;s blogs">
+    <meta property="og:image" content="/images/panda_1_32x32.png">
+    <meta property="og:description" content="借着一个机会，读了一下近三年的计算机视觉的顶级会议发表的论文，共十篇哈，大部分是刚刚6月份的CVPR会议发表的，趁热乎的，看看CV领域的学术界最近都在这块捯饬啥。">
+    <meta property="og:article:tag" content="Paper"> 
+
+    
+        <meta property="article:published_time" content="Mon Jul 08 2019 02:04:40 GMT+0800">
+        <meta property="article:modified_time" content="Mon Jul 08 2019 02:40:42 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://idforhyit.github.io/2019/07/08/Paper-Read-CV-10/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://idforhyit.github.io/2019/07/08/Paper-Read-CV-10/index.html",
+    "headline": "记•读CV文献",
+    "datePublished": "Mon Jul 08 2019 02:04:40 GMT+0800",
+    "dateModified": "Mon Jul 08 2019 02:40:42 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "IDforHYIT",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/avatar_github.jpg"
+        },
+        "description": "病名为哀，,为卿所爱 "
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDforHYIT&#39;s blogs",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/images/panda_1_32x32.png"
+        }
+    },
+    "keywords": ",PaperBlog",
+    "description": "借着一个机会，读了一下近三年的计算机视觉的顶级会议发表的论文，共十篇哈，大部分是刚刚6月份的CVPR会议发表的，趁热乎的，看看CV领域的学术界最近都在这块捯饬啥。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-Makeup-Go-Blind-Reversion-of-Portrait-Edit"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. Makeup-Go: Blind Reversion of Portrait Edit</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-Detail-Revealing-Deep-Video-Super-Resolution"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.Detail-Revealing Deep Video Super-Resolution</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-Defense-Against-Adversarial-Images-Using-Web-Scale-Nearest-Neighbor-Search"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. Defense Against Adversarial Images Using Web-Scale Nearest-Neighbor Search</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-Extreme-Relative-Pose-Estimation-for-RGB-D-Scans-via-Scene-Completion"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. Extreme Relative Pose Estimation for RGB-D Scans via Scene Completion</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-Self-Supervised-Adaptation-of-High-Fidelity-Face-Models-for-Monocular-Performance-Tracking"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. Self-Supervised Adaptation of High-Fidelity Face Models for Monocular Performance Tracking</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-Adaptively-Connected-Neural-Networks"><span class="post-toc-number">6.</span> <span class="post-toc-text">6. Adaptively Connected Neural Networks</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-Weakly-Supervised-Discovery-of-Geometry-Aware-Representation-for-3D-Human-Pose-Estimation"><span class="post-toc-number">7.</span> <span class="post-toc-text">7. Weakly-Supervised Discovery of Geometry-Aware Representation for 3D Human Pose Estimation</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#8-Spatial-Aware-Graph-Relation-Network-for-Large-Scale-Object-Detection"><span class="post-toc-number">8.</span> <span class="post-toc-text">8. Spatial-Aware Graph Relation Network for Large-Scale Object Detection</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#9-Skeleton-Based-Action-Recognition-with-Spatial-Reasoning-and-Temporal-Stack-Learning"><span class="post-toc-number">9.</span> <span class="post-toc-text">9.Skeleton-Based Action Recognition with Spatial Reasoning and Temporal Stack Learning</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#10-A-Deeply-initialized-Coarse-to-fine-Ensemble-of-Regression-Trees-for-Face-Alignment"><span class="post-toc-number">10.</span> <span class="post-toc-text">10. A Deeply-initialized Coarse-to-fine Ensemble of Regression Trees for Face Alignment</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/images/Paper-Read-CV/CVPR2019.png)">
+    
+            <p class="article-headline-p">
+                记•读CV文献
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/images/avatar_github.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>IDforHYIT</strong>
+        <span>7月 08, 2019</span>
+    </div>
+
+    <p style="font-family:verdana;font: size 8px;"> <span id="busuanzi_container_page_pv"> <img src="https://material.io/tools/icons/static/icons/outline-remove_red_eye-24px.svg" width="18" alt="本页面访问量"> <b><span id="busuanzi_value_page_pv"></span></b></span></p>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAACy0lEQVR42u3aW27jMBAEQN//0tkDBFa6OXJWIUtfgR8UiwYymB69vo68XtjY2NjY2NjY2NiPZL/i6/u33q3z7pXr+07ejfaMjY2NvTX7h3/9AfJ6tfyT1wc02jM2Njb2Aex3BaDlJWuurTbaMzY2Njb25XZz6tr62NjY2NifYLfhUd7eXIdT2NjY2NiTUKltVK6D+7ZE/bcsDRsbG/vx7Hxo+py/f3W+jY2Njf1g9r1XXlquG5i81Sn2ho2Njb0pO28kJm1G0rpMSik2Njb2yexJ0N9G/NfrrD0klAyesbGxsfdm52FN3hgkn58Phus7YmNjY2/Kbm/cNhjJK5P2Jm9IsLGxsXdlr0VCSdOSx0bz8nnDfBsbGxv7j7PnB5E0GPlAYm1IjI2NjX0mux33zgvM2kggKaLY2NjY2PeG/msNTHusyRFjY2Njn8DOeXkzkJTJyZghHyRgY2Nj781ee3Smjemj+D4+svyHwcbGxj6HPRmgtsFTW9LqgS42Njb2Yex2uXYk3IZQk2DrhyPGxsbGPoa9NgbOtzUvnG0IhY2NjX0COy8h+cB1Ev23JTZaGRsbG/sA9qTNaIfH7X3be2FjY2Ofw54PUNvyNor4yyPGxsbGPod9Xa4mkVMb9M+DpMX5NjY2NvafZbchUXGbpaZiLZyK7oiNjY29KXttZLsWBk1alPaRIGxsbOxz2G15aGOjZKPJtfYDYGNjY5/AXgvr8zajbUjaR3aKIoeNjY29Kbu92mNqW52c0Y6EsbGxsXdlt81A3lrMhwqTtgcbGxv7NHb7eE07rE2Oo30wKC+o2NjY2Oewk5agHRjka66tdkMBw8bGxj6M3Qb0awPgtihGPxI2NjY29k3fmjzKk7M/UrexsbGxH89OQqV78W25aneOjY2NfQ57LbJpC9uknUgO64PzbWxsbOwHs8+5sLGxsbGxsbGxsR9z/QP49eKV62FDYwAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+
+
+    <!-- share --> 
+    <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">share</i>
+            <span class="visuallyhidden">show menu</span>
+    </button>
+        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
+                            
+            
+
+            
+                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&pic=https://idforhyit.github.io/images/panda_1_16x16.png&searchPic=false&style=simple" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到微博
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&via=IDforHYIT" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Twitter
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Facebook
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://plus.google.com/share?url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Google+
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://idforhyit.github.io&title=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 LinkedIn
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=IDforHYIT&#39;s blogs&title=IDforHYIT&#39;s blogs&summary=个人博客&pics=https://idforhyit.github.io/images/panda_1_16x16.png&url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 QQ
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="https://telegram.me/share/url?url=https://idforhyit.github.io&text=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 Telegram
+                    </li>
+                </a>
+            
+        </ul>
+
+
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Paper/">Paper</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p><strong>借着一个机会，读了一下近三年的计算机视觉的顶级会议发表的论文，共十篇哈，大部分是刚刚6月份的CVPR会议发表的，趁热乎的，看看CV领域的学术界最近都在这块捯饬啥。</strong></p>
+<a id="more"></a>
+<style type="text/css">
+    .btn {
+        display: inline-block;
+        font-size: 14px;
+        color: #fff;
+        background: #222;
+        border: 2px solid #222;
+        text-decoration: none;
+        border-radius: 0;
+        transition-property: background-color;
+        transition-duration: 0.2s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+    }
+    .btn:hover,
+    .button .btn:hover {
+          border-color: #222;
+          color: #222;
+          background: #fff;
+    }
+    .button .btn {
+        color: #fff;
+        font-size: 15px;
+        background: #686868;
+        border-radius: 16px;
+        line-height: 2;
+        margin: 0 4px 8px 4px;
+        padding: 0 20px;
+        transition: 0.2s ease-out;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+</style>
+
+
+<hr>
+<blockquote>
+<p>计算机视觉领域世界三大顶级会议分别为CVPR、ICCV和ECCV。</p>
+<p>详见知乎<strong>扫盲</strong>专栏：<a href="https://zhuanlan.zhihu.com/p/38595692" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38595692</a></p>
+</blockquote>
+<hr>
+<p><strong>概览</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">论文</th>
+<th style="text-align:center">作者</th>
+<th style="text-align:center">会议</th>
+<th style="text-align:center">年份</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Makeup-Go: Blind Reversion of Portrait Edit</td>
+<td style="text-align:center">Ying-Cong Chen ; Xiaoyong Shen ; <strong>Jiaya Jia（IEEE Fellow）</strong>等</td>
+<td style="text-align:center">IEEE International Conference on Computer Vision (<strong>ICCV</strong>)，全球三大计算机视觉顶会之一</td>
+<td style="text-align:center">2017</td>
+</tr>
+<tr>
+<td style="text-align:center">Detail-Revealing Deep Video Super-Resolution</td>
+<td style="text-align:center">Xin Tao ; Hongyun Gao ; Renjie Liao ; Jue Wang ; <strong>Jiaya Jia（IEEE Fellow）</strong>等</td>
+<td style="text-align:center">IEEE International Conference on Computer Vision (<strong>ICCV</strong>)</td>
+<td style="text-align:center">2017</td>
+</tr>
+<tr>
+<td style="text-align:center">Skeleton-Based Action Recognition with Spatial Reasoning and Temporal Stack Learning</td>
+<td style="text-align:center">Chenyang Si, Ya Jing, Wei Wang, Liang Wang, Tieniu Tan</td>
+<td style="text-align:center">The European Conference on Computer Vision (<strong>ECCV</strong>)，全球计算机视觉三大顶会之一</td>
+<td style="text-align:center">2018</td>
+</tr>
+<tr>
+<td style="text-align:center">A Deeply-initialized Coarse-to-fine Ensemble of Regression Trees for Face Alignment</td>
+<td style="text-align:center">Roberto Valle, Jose M. Buenaposada, Antonio Valdes, Luis Baumela</td>
+<td style="text-align:center">The European Conference on Computer Vision (<strong>ECCV</strong>)</td>
+<td style="text-align:center">2018</td>
+</tr>
+<tr>
+<td style="text-align:center">Defense Against Adversarial Images Using Web-Scale Nearest-Neighbor Search</td>
+<td style="text-align:center">Abhimanyu Dubey，Laurens van der Maaten，Zeki Yalniz，Yixuan Li，and Dhruv Mahajan</td>
+<td style="text-align:center">2019 IEEE Conference on Computer Visionand Pattern Recognition(<strong>CVPR</strong>)，全球计算机视觉三大顶会之一</td>
+<td style="text-align:center">2019</td>
+</tr>
+<tr>
+<td style="text-align:center">Extreme Relative Pose Estimation for RGB-D Scans via Scene Completion</td>
+<td style="text-align:center">Zhenpei Yang，Jeffrey Z. Pan，Linjie Luo，Xiaowei Zhou，Kristen Grauman，and Qixing Huang</td>
+<td style="text-align:center">2019 IEEE Conference on Computer Visionand Pattern Recognition(<strong>CVPR</strong>)</td>
+<td style="text-align:center">2019</td>
+</tr>
+<tr>
+<td style="text-align:center">Self-Supervised Adaptation of High-Fidelity Face Models for Monocular Performance Tracking</td>
+<td style="text-align:center">Jae Shin Yoon，Takaaki Shiratori，Shoou-I Yu，and Hyun Soo Park</td>
+<td style="text-align:center">2019 IEEE Conference on Computer Visionand Pattern Recognition(<strong>CVPR</strong>)</td>
+<td style="text-align:center">2019</td>
+</tr>
+<tr>
+<td style="text-align:center">Adaptively Connected Neural Networks</td>
+<td style="text-align:center">Guangrun Wang, Keze Wang, Liang Lin</td>
+<td style="text-align:center">2019 IEEE Conference on Computer Visionand Pattern Recognition(<strong>CVPR</strong>)</td>
+<td style="text-align:center">2019</td>
+</tr>
+<tr>
+<td style="text-align:center">Weakly-Supervised Discovery of Geometry-Aware Representation for 3D Human Pose Estimation</td>
+<td style="text-align:center">Xipeng Chen, Kwan-Yee Lin, Wentao Liu, Chen Qian, Liang Lin</td>
+<td style="text-align:center">2019 IEEE Conference on Computer Visionand Pattern Recognition(<strong>CVPR</strong>)</td>
+<td style="text-align:center">2019</td>
+</tr>
+<tr>
+<td style="text-align:center">Spatial-Aware Graph Relation Network for Large-Scale Object Detection</td>
+<td style="text-align:center">Hang Xu, Chenhan Jiang, Xiaodan Liang, Zhenguo Li</td>
+<td style="text-align:center">2019 IEEE Conference on Computer Visionand Pattern Recognition(<strong>CVPR</strong>)</td>
+<td style="text-align:center">2019</td>
+</tr>
+</tbody>
+</table>
+<p><strong>文献阅读体会</strong></p>
+<hr>
+<ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-Makeup-Go-Blind-Reversion-of-Portrait-Edit"> <span class="post-toc-text">1. Makeup-Go: Blind Reversion of Portrait Edit</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-Detail-Revealing-Deep-Video-Super-Resolution"> <span class="post-toc-text">2.Detail-Revealing Deep Video Super-Resolution</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-Defense-Against-Adversarial-Images-Using-Web-Scale-Nearest-Neighbor-Search"><span class="post-toc-text">3. Defense Against Adversarial Images Using Web-Scale Nearest-Neighbor Search</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-Extreme-Relative-Pose-Estimation-for-RGB-D-Scans-via-Scene-Completion"> <span class="post-toc-text">4. Extreme Relative Pose Estimation for RGB-D Scans via Scene Completion</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-Self-Supervised-Adaptation-of-High-Fidelity-Face-Models-for-Monocular-Performance-Tracking"> <span class="post-toc-text">5. Self-Supervised Adaptation of High-Fidelity Face Models for Monocular Performance Tracking</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-Adaptively-Connected-Neural-Networks"> <span class="post-toc-text">6. Adaptively Connected Neural Networks</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-Weakly-Supervised-Discovery-of-Geometry-Aware-Representation-for-3D-Human-Pose-Estimation"> <span class="post-toc-text">7. Weakly-Supervised Discovery of Geometry-Aware Representation for 3D Human Pose Estimation</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#8-Spatial-Aware-Graph-Relation-Network-for-Large-Scale-Object-Detection"> <span class="post-toc-text">8. Spatial-Aware Graph Relation Network for Large-Scale Object Detection</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#9-Skeleton-Based-Action-Recognition-with-Spatial-Reasoning-and-Temporal-Stack-Learning"> <span class="post-toc-text">9.Skeleton-Based Action Recognition with Spatial Reasoning and Temporal Stack Learning</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#10-A-Deeply-initialized-Coarse-to-fine-Ensemble-of-Regression-Trees-for-Face-Alignment"> <span class="post-toc-text">10. A Deeply-initialized Coarse-to-fine Ensemble of Regression Trees for Face Alignment</span></a></li></ol>
+
+<hr>
+<h1 id="1-Makeup-Go-Blind-Reversion-of-Portrait-Edit"><a href="#1-Makeup-Go-Blind-Reversion-of-Portrait-Edit" class="headerlink" title="1. Makeup-Go: Blind Reversion of Portrait Edit"></a>1. Makeup-Go: Blind Reversion of Portrait Edit</h1><p><strong>论文：</strong>Makeup-Go: Blind Reversion of Portrait Edit</p>
+<p><strong>作者：</strong>Ying-Cong Chen ; Xiaoyong Shen ; <strong>Jiaya Jia（IEEE Fellow）</strong>等</p>
+<p><strong>会议：</strong> 2017 IEEE International Conference on Computer Vision (ICCV)，全球三大计算机视觉顶级会议之一</p>
+<p><strong>体会：</strong></p>
+<p>腾讯优图杰出科学家贾佳亚博士作为国际图像处理的顶尖专家，本次第一个检索的就是这位新生代IEEE Fellow署名参与的文章。</p>
+<p>这篇论文发表于2017 年的IEEE计算机视觉国际会议（<code>ICCV</code>）中，主要介绍了<strong>一种基于CRN组件回归网络处理面部细微细节和颜色变化的方法</strong>，论文很有启发性。论文中所介绍的方法在社交领域的图片“卸妆”前后效果明显，论文中提到了已经被修饰美化过的照片（<code>Edited Image</code>）可以通过一个<code>CNN网络</code>处理得到一个<code>Output</code>图片，通过论文的<code>Figure 1</code>可以看到，该方法的输出图片与原始未经处理的图片比较，人脸的细节恢复度得到了一个不错的效果。深挖作者团队所发现的一篇独家报道也提出，这个网络并不是对所有案例都是有效，不过提出的 <code>component regression network</code>，不仅在图像修复领域，在很多领域有非常强的应用。</p>
+<p>这种技术被论文团队主要用在了社交领域的“一键卸妆”上，但进一步反思过来，论文所提出的<code>CRN网络</code>若用在模糊照片的修复上，也许可能会有意外的效果，对于特殊场景下，如<u>低分辨率的监控画面的人脸表情的分析</u>，可能也是一个不错的方向。</p>
+<h1 id="2-Detail-Revealing-Deep-Video-Super-Resolution"><a href="#2-Detail-Revealing-Deep-Video-Super-Resolution" class="headerlink" title="2.Detail-Revealing Deep Video Super-Resolution"></a>2.Detail-Revealing Deep Video Super-Resolution</h1><p><strong>论文：</strong>Detail-Revealing Deep Video Super-Resolution</p>
+<p><strong>作者：</strong>Xin Tao ; Hongyun Gao ; Renjie Liao ; Jue Wang ; <strong>Jiaya Jia（IEEE Fellow）</strong>等</p>
+<p><strong>会议：</strong> 2017 IEEE International Conference on Computer Vision (ICCV)，全球三大计算机视觉顶级会议之一</p>
+<p><strong>体会：</strong></p>
+<p>这篇文章也是发表于2017年IEEE的ICCV文章，同样也产自于腾讯优图实验室，业界前列的实验室，一个神奇的地方。</p>
+<p>这篇论文与上篇论文不同，研究的是一种超分辨率下的视频方法。做视频超分辨率的 <code>motivation</code>，传统而基础的问题，但应用场景非常多，比如在监控级别的场景下对车牌号进行分析识别。</p>
+<p>论文中提到了该领域的两个主要难点，一个是怎样去得到一个effective的网络，二是模型问题。研究团队提出的这个<code>CNN-based</code>网络框架，如论文中<code>Figure 2</code>所描述的方法，设置了<code>Fully convolutional</code>，对<code>SPMC层</code>不做任何参数，此外还有<code>Conv LSTM</code>。对于这个网络，这篇长达9页的论文也提到，实验中输入三个相同帧，效果不是很好，但输入三个连续帧时，可以得到比较好的效果（如论文<code>Figure 5</code>所示，以对运动的汽车识别其车牌号举例，处理还原后的清晰度很高）。</p>
+<p>研究团队在一场专访报告中也指出，落地良好并且在工业级别也取得了令人兴奋的效果，<strong>提出的<code>SPMC layer</code>在效果和速度方面也优于<code>BayesSR、MFSR、DESR、VSRNet</code>这些前辈</strong>，可见论文所提出的方法适应性很好，如果在视频流的人脸分析的去模糊处理中用到此模型，不知适应性会怎样。</p>
+<h1 id="3-Defense-Against-Adversarial-Images-Using-Web-Scale-Nearest-Neighbor-Search"><a href="#3-Defense-Against-Adversarial-Images-Using-Web-Scale-Nearest-Neighbor-Search" class="headerlink" title="3. Defense Against Adversarial Images Using Web-Scale Nearest-Neighbor Search"></a>3. Defense Against Adversarial Images Using Web-Scale Nearest-Neighbor Search</h1><p><strong>论文：</strong>Defense Against Adversarial Images Using Web-Scale Nearest-Neighbor Search</p>
+<p><strong>作者：</strong>Abhimanyu Dubey，Laurens van der Maaten，Zeki Yalniz，Yixuan Li，and Dhruv Mahajan</p>
+<p><strong>会议：</strong>2019 IEEE Conference on Computer Visionand Pattern Recognition(CVPR)，全球计算机视觉三大顶会之一</p>
+<p><strong>体会：</strong>从这篇文章，我开始尝试阅读本领域内最新的顶级文章，不再局限于论文的知名度和关注度，看一下最新的技术都在捯饬啥。</p>
+<p>这篇文章我找到了刚刚发表不久，于今年6月16~20日 在美国洛杉矶举办的全球计算机视觉的三大顶会之一的<strong>CVPR 2019</strong>(IEEE Conference on Computer Visionand Pattern Recognition) ，计算机领域顶会第一次进入<strong>Top20</strong>的行列的会议。论文刚出炉，正热乎，拿来文献查新。</p>
+<p>论文的研究团队来自Facebook AI研究院，工业界的实力干将之一，今年产出论文中共有 37 篇论文被CVPR收录，其中包括 15 篇 Oral 论文。</p>
+<p>Defense Against Adversarial Images Using Web-Scale Nearest-Neighbor Search，中文译名为《使用网络规模近邻搜索的对抗性图像的防御》，论文太热乎，目前网路上尚没有此篇论文的笔记，读起来很吃劲。该论文的简述中表明，卷积网络对<code>adversarial images</code>不具有鲁棒性，这些图像随数据分布而扰动，使损失达到最大化。论文演示了<strong>一种最近邻的对抗性图片的防御手段</strong>（<code>nearestneighbor defenses</code>）。研究团队在ImageNet这个庞大且开源的数据集上做了测试，在论文的第3部分，介绍了一个攻击模型（<code>Attack Model</code>）与攻击方法（<code>Adversarial Attack Methods</code>），并在第4部分，介绍了通过最近邻进行对坑防御的原理（<code>Adversarial Defenses via Nearest Neighbors</code>）。第5部分，论文的研究团队在<code>ImageNet</code>上进行了利用实验模型进行精度防御的结果，也就是<code>Table 1</code>中的实验数据值。<code>Figure 5</code>中对灰盒和黑盒中的数据量由10^6^ 到 10^9^ 这几个数量级的增加中，利用CBW-D对PGD对坑图像的分类在ImageNet数据集上精度的变化。</p>
+<h1 id="4-Extreme-Relative-Pose-Estimation-for-RGB-D-Scans-via-Scene-Completion"><a href="#4-Extreme-Relative-Pose-Estimation-for-RGB-D-Scans-via-Scene-Completion" class="headerlink" title="4. Extreme Relative Pose Estimation for RGB-D Scans via Scene Completion"></a>4. Extreme Relative Pose Estimation for RGB-D Scans via Scene Completion</h1><p><strong>论文：</strong>Extreme Relative Pose Estimation for RGB-D Scans via Scene Completion</p>
+<p><strong>作者：</strong>Zhenpei Yang，Jeffrey Z. Pan，Linjie Luo，Xiaowei Zhou，Kristen Grauman，and Qixing Huang</p>
+<p><strong>会议：</strong>2019 IEEE Conference on Computer Visionand Pattern Recognition(CVPR)，全球计算机视觉三大顶会之一</p>
+<p><strong>体会：</strong></p>
+<p>Extreme Relative Pose Estimation for RGB-D Scans via Scene Completion，中文译名为《基于场景补全的 RGB-D 扫描的极端相对姿态估计》。来自世界不同地方的几个该领域的大拿共著了这片论文，同样发表在刚刚结束不久的2019CVPR上。这篇论文主要介绍的是研究团队所引入的新的研究方法对极端相对姿态估计与场景补全。</p>
+<p>研究团队在<code>SUNCG，Matterport，SanNet</code>这三个数据集上用不同的图片角度做了大量实验（见论文中的<code>Table 1</code>），关键思想是在3D场景下进行RGB-D扫描补全以得到一个基础的几何形状，然后计算相对位姿。实验结果显示<strong>在极端不重叠之间的相对位姿之间所采取的处理方法</strong>取得了encouraging的效果。</p>
+<h1 id="5-Self-Supervised-Adaptation-of-High-Fidelity-Face-Models-for-Monocular-Performance-Tracking"><a href="#5-Self-Supervised-Adaptation-of-High-Fidelity-Face-Models-for-Monocular-Performance-Tracking" class="headerlink" title="5. Self-Supervised Adaptation of High-Fidelity Face Models for Monocular Performance Tracking"></a>5. Self-Supervised Adaptation of High-Fidelity Face Models for Monocular Performance Tracking</h1><p><strong>论文：</strong>Self-Supervised Adaptation of High-Fidelity Face Models for Monocular Performance Tracking</p>
+<p><strong>作者：</strong>Jae Shin Yoon，Takaaki Shiratori，Shoou-I Yu，and Hyun Soo Park</p>
+<p><strong>会议：</strong>2019 IEEE Conference on Computer Visionand Pattern Recognition(CVPR)，全球计算机视觉三大顶会之一</p>
+<p><strong>体会：</strong></p>
+<p>Self-Supervised Adaptation of High-Fidelity Face Models for Monocular Performance Tracking，中文译名为《用于单目性能跟踪的高保真人脸模型的自监督适应》，来自Facebook这个顶级研究团队，发表于IEEE的2019 CVPR。</p>
+<p>论文的研究队伍提出了<strong>一种基于「连续帧纹理一致性」进行自监督域适应的方法</strong>，能够将普通相机拍出的2D图片转化为一个3D格式（效果见论文的<code>Figure 3</code>）。</p>
+<p>论文研究团队首先通过训练一个可以直接从单个二维图像驱动人脸模型的新网络来规避对特殊输入数据的需求（drive a face model just from a single 2D image）；然后，在假设人脸在连续帧上的外观是一致的前提下，基于「连续帧纹理一致性」进行自监督域适应。实验表明，在不需要任何来自新领域的标记数据的情况下，能够让手机摄像头中的高保真人脸模型执行复杂的面部运动（drive a high-fidelity face model to perform complex facial motion from a cellphone camera without requiring any labeled data from the new domain）。</p>
+<h1 id="6-Adaptively-Connected-Neural-Networks"><a href="#6-Adaptively-Connected-Neural-Networks" class="headerlink" title="6. Adaptively Connected Neural Networks"></a>6. Adaptively Connected Neural Networks</h1><p><strong>论文：</strong>Adaptively Connected Neural Networks</p>
+<p><strong>作者：</strong>Guangrun Wang, Keze Wang, Liang Lin</p>
+<p><strong>会议：</strong>2019 IEEE Conference on Computer Visionand Pattern Recognition(CVPR)，全球计算机视觉三大顶会之一</p>
+<p><strong>介绍：</strong></p>
+<p>中文译名为《自适应连接神经网络》。论文研究人员引入一种新的自适应连接神经网络（<code>ACNet</code>），从两方面改进了传统的卷积神经网络（<code>CNN</code>）。一是<code>ACNet</code>可以自适应地决定神经元连接属于全局连接抑或局部连接，从而进行自适应局部推断或全局推断。论文实验可以证明，<strong>现有的卷积神经网络(<code>CNN</code>)、经典的多层感知器（<code>MLP</code>）和最近提出的非局域网络（<code>NLN</code>）都是<code>ACNet</code>的特例</strong>。二是<code>ACNet</code>不仅可以适用于传统的欧氏数据（例如图像、音频等），也可以适用于非欧氏数据（<code>graph data</code>）。实验表明，<code>ACNet</code>在<code>ImageNet-1K/CIFAR</code>图像分类、<code>COCO 2017</code>目标检测和分割、<code>CUHK03</code>行人重识别以及<code>CORA</code>文档分类等任务中达到了State-of-the-art效果。</p>
+<p>具体来说，研究人员首先使用自变换操作（Self Trans模块）提取像素级特征、卷积操作（CNN 模块）提取局部特征、多层感知器操作（MLP 模块）提取全局特征，然后使用自适应连接神经网络(ACNET模块)融合三者，得到局部与全局自适应的特征，这样ACNet既有自变换操作和卷积操作所具有的局部推断能力，又具有多层感知器操作所具有的全局推断能力。</p>
+<h1 id="7-Weakly-Supervised-Discovery-of-Geometry-Aware-Representation-for-3D-Human-Pose-Estimation"><a href="#7-Weakly-Supervised-Discovery-of-Geometry-Aware-Representation-for-3D-Human-Pose-Estimation" class="headerlink" title="7. Weakly-Supervised Discovery of Geometry-Aware Representation for 3D Human Pose Estimation"></a>7. Weakly-Supervised Discovery of Geometry-Aware Representation for 3D Human Pose Estimation</h1><p><strong>论文：</strong>Weakly-Supervised Discovery of Geometry-Aware Representation for 3D Human Pose Estimation</p>
+<p><strong>作者：</strong>Xipeng Chen, Kwan-Yee Lin, Wentao Liu, Chen Qian, Liang Lin</p>
+<p><strong>会议：</strong>2019 IEEE Conference on Computer Visionand Pattern Recognition(CVPR)，全球计算机视觉三大顶会之一</p>
+<p><strong>介绍：</strong></p>
+<p>中文译名为《基于结构表征的弱监督3D人体姿态估计》。论文的研究团队提出一种解决方法，拟从从大量多视角图像中提取额外的 3D 人体结构信息，使用额外信息辅助单张图像的 3D 人体姿态估计任务。在提取额外信息的过程中，只使用带有 2D 标注的多视角图像作为训练集，选取编解码器作为主干网络，训练编解码器实现不同视角下 2D 人体信息的相互转换。为了让转换仅仅基于人体结构，选取 2D人体骨架作为本文方法的 2D 人体信息，而没有使用原始图像。进一步加入了对 3D 结构的一致性约束，使得抽取到的额外信息的 3D 结构更加稳定。因为抽取的额外信息蕴含了人体的 3D 结构信息，所以将它映射到 3D 关键点坐标将会比直接利用 2D 图像或者 2D 坐标更为容易。继而验证了仅仅<strong>使用简单的两层线性全连接层，可以从额外信息中解码出相对合理的 3D 人体姿态</strong>。</p>
+<p>​    经过实验验证，本文提取的额外信息可以作为对 3D 人体姿态信息的补充，简单灵活的融合到现有的 3D 人体姿态估计方法中，得到更加准确的预测结果。在标准的大型3D 人体数据库 <code>Human3.6M</code> 上，本文提取的额外信息对三种不同的 3D 人体姿态估计方法都有较大提升。对于现有最好的开源 3D 人体姿态估计方法，在标准 的数据划分下使用评估指标 <code>MPJPE</code>，本文提出的方法仍然有<code>7%</code> 的提升，<strong>在现有的方法中达到最好的效果</strong>。</p>
+<h1 id="8-Spatial-Aware-Graph-Relation-Network-for-Large-Scale-Object-Detection"><a href="#8-Spatial-Aware-Graph-Relation-Network-for-Large-Scale-Object-Detection" class="headerlink" title="8. Spatial-Aware Graph Relation Network for Large-Scale Object Detection"></a>8. Spatial-Aware Graph Relation Network for Large-Scale Object Detection</h1><p><strong>论文：</strong>Spatial-Aware Graph Relation Network for Large-Scale Object Detection</p>
+<p><strong>作者：</strong>Hang Xu, Chenhan Jiang, Xiaodan Liang, Zhenguo Li</p>
+<p><strong>会议：</strong>2019 IEEE Conference on Computer Visionand Pattern Recognition(CVPR)，全球计算机视觉三大顶会之一</p>
+<p><strong>介绍：</strong></p>
+<p>中文译名为《空间感知的图关系网络及在大规模目标检测的应用》。本论文的研究团队的工作目标是设计一个基于图卷积神经网络的检测框架，它可以同时<strong>利用语义和空间关系，直接从训练集中有效地学习到可解释的稀疏图结构，并根据学到的图结构进行推理和特征传播，增强小目标、罕见类和模糊遮挡目标的特征相应提高检测结果</strong>。</p>
+<p>论文提出的<code>SGRN框架</code>由两个模块组成：一个稀疏关系图学习模块（<code>Relation Learner</code>）和一个空间感知图推理模块（<code>Spatial Graph Reasoning</code>）。关系图学习模块首先从视觉特征中学习一个稀疏邻接矩阵，它保持了最相关的T个连接关系。然后，收集前一个分类器的权重，并将其映射到每个目标上，从而成为每个目标的视觉向量。目标之间的相对空间信息（距离、角度）被用来学习高斯核参数，以确定图形卷积的模式。在空间感知图形推理模块中，根据稀疏邻接矩阵和高斯核对不同区域的视觉嵌入进行演化和传播。空间图推理模块的输出与原始区域特征相连接，以改进分类和定位。</p>
+<h1 id="9-Skeleton-Based-Action-Recognition-with-Spatial-Reasoning-and-Temporal-Stack-Learning"><a href="#9-Skeleton-Based-Action-Recognition-with-Spatial-Reasoning-and-Temporal-Stack-Learning" class="headerlink" title="9.Skeleton-Based Action Recognition with Spatial Reasoning and Temporal Stack Learning"></a>9.Skeleton-Based Action Recognition with Spatial Reasoning and Temporal Stack Learning</h1><p><strong>论文：</strong>Skeleton-Based Action Recognition with Spatial Reasoning and Temporal Stack Learning</p>
+<p><strong>作者：</strong>Chenyang Si, Ya Jing, Wei Wang, Liang Wang, Tieniu Tan</p>
+<p><strong>会议：</strong>2018 The European Conference on Computer Vision (ECCV)，全球计算机视觉三大顶会之一</p>
+<p><strong>介绍：</strong></p>
+<p>中文译名为《行为识别论文笔记之多纤维网络》。本论文的研究团队文章的核心 motivation 就是认为目前的 <code>sota 的 3D 网络</code>（比如 I3D 以及 R(2+1)D-34 网络）的计算量 <code>FLOPs</code> 都太高了。常用的 2D 卷积网络如<code>resnet-152 或是 vgg-16 网络</code>大概是 10+ 的 GFLOPs，而刚刚提到的两种 3D 卷积网络则达到了 100+ GFLOPs。作者认为，当计算量相近的时候，由于 3D 网络模型能额外的学习到时空信息，clip-based 的模型（即指 3D 网络）应该要能比 <code>frame-based</code> 的模型（即指 2D 网络）有更好的效果。所以，这篇文章的目标就是<strong>在保持现有 sota 的 3D 模型的效果的同时，大大提高其网络效率</strong>。</p>
+<p>文章主要是进一步优化了 <code>Multi-Path</code>模块的结构，并将其用于了 3D 卷积网络，从而大大提高 3D 卷积网络的效率。在效率大大提高后，其实也更有利于我们继续将网络做的更复杂更有效，像之前的 I3D 的效率实在太差了，很难进一步增加复杂度。<strong>一方面通过引入网络加速技巧对模型速度进行优化，一方面通过增加网络对时序建模的能力来对模型效果进行提高</strong>，应该是未来 3D 网络研究更平衡的一种发展道路吧。</p>
+<h1 id="10-A-Deeply-initialized-Coarse-to-fine-Ensemble-of-Regression-Trees-for-Face-Alignment"><a href="#10-A-Deeply-initialized-Coarse-to-fine-Ensemble-of-Regression-Trees-for-Face-Alignment" class="headerlink" title="10. A Deeply-initialized Coarse-to-fine Ensemble of Regression Trees for Face Alignment"></a>10. A Deeply-initialized Coarse-to-fine Ensemble of Regression Trees for Face Alignment</h1><p><strong>论文：</strong>A Deeply-initialized Coarse-to-fine Ensemble of Regression Trees for Face Alignment</p>
+<p><strong>作者：</strong>Roberto Valle, Jose M. Buenaposada, Antonio Valdes, Luis Baumela</p>
+<p><strong>会议：</strong>2018 The European Conference on Computer Vision (ECCV)，全球计算机视觉三大顶会之一</p>
+<p><strong>介绍：</strong></p>
+<p>本论文的作者认为，出现人脸特征点距离真实位置偏移过大，是因为算法初始化时的特征点不够鲁棒，于是提出一种<strong>使用深度卷积网络粗略估计特征点位置，结合3D人脸姿态估计与重投影确定特征点初始位置，然后使用经典的回归树集成（<code>Ensemble of Regression Trees，ERT</code>）方法提精位置</strong>。</p>
+<p>论文的创新性在于，作者结合深度学习方法与传统方法，将深度学习方法得到的结果用于传统方法的特征点初始化，作者认为深度学习方法得到的特征点位置更加鲁棒。速度上，该文在NVidia GeForce GTX 1080 (8GB) GPU 与 Intel Xeon E5-1650 3.50GHz (6 cores/12 threads, 32 GB of RAM)机器上可以达到实时（32fps）,比<code>清华&amp;商汤</code>开源<code>CVPR2018</code>超高精度人脸对齐算法<code>LAB</code>要快，但<code>LAB</code>比该文的精度要高。</p>
+<div align="center" class="button"><br>    <!-- Page Mod By IDforHYIT --><br>    <b>本文可编辑PDF文档下载地址</b><br>        <a class="btn" href="https://www.lanzous.com/i4vw9qh" rel="noopener" target="_blank">蓝奏云下载（速度快） »</a><br>        <a class="btn" href="/images/Paper-Read-CV/PDF_CV_10.pdf" rel="contents">博客直链下载（稳定） »</a><br></div>
+
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons/" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://idforhyit.github.io/2019/07/08/Paper-Read-CV-10/">https://idforhyit.github.io/2019/07/08/Paper-Read-CV-10/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODg1NC8xNTM4Mg==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2019/06/01/Docker-GPU-RemoteInterpreter/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/side.jpg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/images/avatar_github.jpg" alt="IDforHYIT's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        idforhyit@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: idforhyit@qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://idforhyit.coding.me/GitBook/" target="_blank" title="GitBook">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">library_books</i>
+                        
+                        GitBook
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="http://idforhyit.orgfree.com/" target="_blank" title="Drive">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">cloud_queue</i>
+                        
+                        Drive
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Lab/">Lab<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/categories/Others/">Others<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/备忘录/">备忘录<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/安利区/">安利区<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/搬运区/">搬运区<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/蓝桥杯/">蓝桥杯<span class="sidebar_archives-count">13</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">insert_photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">table_chart</i>
+                
+                Tags
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="http://144.34.236.154:34567/A:" title="Drive">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_queue</i>
+                
+                Drive
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">39</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+    <!-- Paradox Footer Left Section -->
+    <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/IDforHYIT/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+    <!--Copyright-->
+    <div id="copyright">
+        Copyright&nbsp;©&nbsp;1999&nbsp;-
+        <script type="text/javascript">var fd = new Date(); document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>
+        IDforHYIT's blogs
+        
+        <br>
+        
+        <a href="https://996.icu/#/zh_CN" rel="nofollow">996.ICU 备2333号-9527</a>
+        
+        
+
+
+        <!-- <script async src="busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+        <div>
+            <span id="busuanzi_container_site_uv">本站访客数为 <u><span id="busuanzi_value_site_uv"></span></u> 次
+                &nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+            <span id="busuanzi_container_site_pv">总访问量为 <u><span id="busuanzi_value_site_pv"></span></u> 人次
+        </span></span></div>
+    </div>
+
+    <!-- Paradox Footer Right Section -->
+
+    <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+    <!-- <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div> -->
+    <div class="mdl-mini-footer--right-section">
+        <div>
+            <center>
+                <div class="footer-develop-div">本页面由<a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>强力驱动</div>
+            </center>
+            <center>
+                <div class="footer-develop-div">Theme by <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>（Mod By IDforHYIT）</div>
+            </center>
+            <center>ღ( ´･ᴗ･` )比心</center>
+        </div>
+    </div>
+    
+</footer>
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    
+        <script>lsloader.load("sm_js","/js/smoothscroll.js?lOy/ACj5suSNi7ZVFVbpFQ==", true)</script>
+    
+
+
+
+<!-- Busuanzi -->
+
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- 
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  -->
+
+
+   
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
