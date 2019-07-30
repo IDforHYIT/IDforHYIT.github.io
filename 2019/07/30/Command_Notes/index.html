@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+        <link rel="dns-prefetch" href="https://cdn-city.livere.com">
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            『集合』常用命令行命令整理（不定期更新） | 
+        
+        IDforHYIT&#39;s blogs
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/images/panda_1_16x16.png">
+    <link rel="icon" href="/images/panda_1_32x32.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="
+整理的一些个人平时经常用到的命令，包括且不限于Linux、Docker、pip、Conda等，减少些反复检索。不全、不定期更新补充同步个人笔记~
+">
+    <meta name="keywords" content="Blog,Git,Linux,Docker,Conda,Pip">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body {
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text {
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="IDforHYIT&#39;s blogs">
+    <meta name="msapplication-starturl" content="https://idforhyit.github.io/2019/07/30/Command_Notes/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="IDforHYIT&#39;s blogs">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/images/panda_1_32x32.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://idforhyit.github.io/2019/07/30/Command_Notes/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="『集合』常用命令行命令整理（不定期更新） | IDforHYIT&#39;s blogs">
+    <meta property="og:image" content="/images/panda_1_32x32.png">
+    <meta property="og:description" content="
+整理的一些个人平时经常用到的命令，包括且不限于Linux、Docker、pip、Conda等，减少些反复检索。不全、不定期更新补充同步个人笔记~
+">
+    <meta property="og:article:tag" content="Git"> <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="Docker"> <meta property="og:article:tag" content="Conda"> <meta property="og:article:tag" content="Pip"> 
+
+    
+        <meta property="article:published_time" content="Tue Jul 30 2019 21:29:00 GMT+0800">
+        <meta property="article:modified_time" content="Tue Jul 30 2019 21:47:14 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://idforhyit.github.io/2019/07/30/Command_Notes/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://idforhyit.github.io/2019/07/30/Command_Notes/index.html",
+    "headline": "『集合』常用命令行命令整理（不定期更新）",
+    "datePublished": "Tue Jul 30 2019 21:29:00 GMT+0800",
+    "dateModified": "Tue Jul 30 2019 21:47:14 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "IDforHYIT",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/images/avatar_github.jpg"
+        },
+        "description": "病名为哀，,为卿所爱 "
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "IDforHYIT&#39;s blogs",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/images/panda_1_32x32.png"
+        }
+    },
+    "keywords": ",Git,Linux,Docker,Conda,PipBlog",
+    "description": "
+整理的一些个人平时经常用到的命令，包括且不限于Linux、Docker、pip、Conda等，减少些反复检索。不全、不定期更新补充同步个人笔记~
+",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Linux"><span class="post-toc-number">1.</span> <span class="post-toc-text">Linux</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系统命令"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">系统命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件操作命令"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">文件操作命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#升级命令"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">升级命令</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#换源步骤"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">换源步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#su-authentication-failure的解决办法"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">su:authentication failure的解决办法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ubuntu-安装-conda-包管理"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">Ubuntu 安装 conda 包管理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Ubuntu-系统安装-Redis"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">Ubuntu 系统安装 Redis</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Docker"><span class="post-toc-number">2.</span> <span class="post-toc-text">Docker</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更换国内镜像源"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">更换国内镜像源</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#暂时使用第三方镜像源命令实例"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">暂时使用第三方镜像源命令实例</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看cudna及cudnn版本"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">查看cudna及cudnn版本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用docker操作命令"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">常用docker操作命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Vim"><span class="post-toc-number">3.</span> <span class="post-toc-text">Vim</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Git"><span class="post-toc-number">4.</span> <span class="post-toc-text">Git</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pip"><span class="post-toc-number">5.</span> <span class="post-toc-text">pip</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#换国内源"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">换国内源</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pipenv"><span class="post-toc-number">6.</span> <span class="post-toc-text">pipenv</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更换项目包源镜像"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">更换项目包源镜像</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用命令"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">常用命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Conda"><span class="post-toc-number">7.</span> <span class="post-toc-text">Conda</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用conda命令"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">常用conda命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Jupyter"><span class="post-toc-number">8.</span> <span class="post-toc-text">Jupyter</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Google-colab-本地编译器命令"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">Google colab 本地编译器命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PyInstaller"><span class="post-toc-number">9.</span> <span class="post-toc-text">PyInstaller</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/images/Command_Notes/bash.jpg)">
+    
+            <p class="article-headline-p">
+                『集合』常用命令行命令整理（不定期更新）
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/images/avatar_github.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>IDforHYIT</strong>
+        <span>7月 30, 2019</span>
+    </div>
+
+    <p style="font-family:verdana;font: size 8px;"> <span id="busuanzi_container_page_pv"> <img src="https://material.io/tools/icons/static/icons/outline-remove_red_eye-24px.svg" width="18" alt="本页面访问量"> <b><span id="busuanzi_value_page_pv"></span></b></span></p>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+        <button id="article-functions-qrcode-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">devices other</i>
+    <span class="visuallyhidden">devices other</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-qrcode-button">
+    <li class="mdl-menu__item">在其它设备中阅读本文章</li>
+    
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAAC1ElEQVR42u3aUW7DIBAE0Nz/0u0J7M4Ajlx4/ooaJ+YRqSN29/Nz5PXBxsbGxsbGxsbGfiX7E19Xn7p8zMWnktfJN9drxsbGxt6a/ce//lvA1XKTvyRraO+//BQ2Njb2AeyrAJgJmyR4kvXMrBkbGxsbO19K/m7y/Vcbio2NjY29ij1WeLrHzIQoNjY2NnZSoMkLTDOv8y34Ui0NGxsb+/XsvGn6ntdf7W9jY2Njv5jdXslBor1zpg1crBwbGxt7U/YTBaO2bPRcYQsbGxv7BPZ9/MwcANqBnnzc576Ydbnp2NjY2Juyk+L+WMwkT2k3uo1ebGxsbOxVJaQklmYOMAv629jY2NhbsO9jJl9W3hJI4mfsXWxsbOxz2Dkgj4120fkPMNMAxsbGxt6VPRZOSRtgfhPzWI3Wg42Njb0pe6axmmzBqlAc225sbGzsc9j54tpDwqr2Q74RUXsAGxsbe2t2G2DJ/W05KR+1zFvL2NjY2Luyn46TMUBdMBqrpWFjY2MfwH6iEZu3fvNwjZoK2NjY2JuykwUl45V58Kz6nuSAhI2NjX0aO4qBOHhWFYPm38XGxsbem90OuCfFnZmh+bapsGDmFBsbG/ufs9uwmTmojEVm3QbAxsbGPpLdDtyMHU6SMlMSgW10YWNjY+/NHhuXSQ4MqyJtvrWMjY2NfRq7DZuxIlQbZm2AFZNK2NjY2Nux2yHLvNyfH2PmWxSDuY2NjY29KTtfen7PWJO4jVJsbGzsE9irijttcWqmtdBuOjY2Nvbe7LbV2paNkiZxe6RpNxEbGxv7BHYeWmODO0nIzT/3j0DFxsbGPoC9qolbjNHEpaW2DVzU0rCxsbGPZyfF/fZZ8yUqbGxsbOyZIs5YwOQjQYONZGxsbOwD2DMHhraE1A76tNuBjY2NfRp7bLTxPpyS0ckkStt28iP9bWxsbOwXs8+5sLGxsbGxsbGxsV9z/QJ/uipc1Tu3ZwAAAABJRU5ErkJggg==">
+    
+</ul>
+
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+
+
+    <!-- share --> 
+    <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+            <i class="material-icons" role="presentation">share</i>
+            <span class="visuallyhidden">show menu</span>
+    </button>
+        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
+                            
+            
+
+            
+                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&pic=https://idforhyit.github.io/images/panda_1_16x16.png&searchPic=false&style=simple" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到微博
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=IDforHYIT&#39;s blogs&url=https://idforhyit.github.io&via=IDforHYIT" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Twitter
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Facebook
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://plus.google.com/share?url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 Google+
+                    </li>
+                </a>
+            
+
+            
+                <a class="index_share-link" href="https://www.linkedin.com/shareArticle?mini=true&url=https://idforhyit.github.io&title=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item mdl-js-ripple-effect">
+                        分享到 LinkedIn
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="http://connect.qq.com/widget/shareqq/index.html?site=IDforHYIT&#39;s blogs&title=IDforHYIT&#39;s blogs&summary=个人博客&pics=https://idforhyit.github.io/images/panda_1_16x16.png&url=https://idforhyit.github.io" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 QQ
+                    </li>
+                </a>
+            
+
+            
+                <a class="post_share-link" href="https://telegram.me/share/url?url=https://idforhyit.github.io&text=IDforHYIT&#39;s blogs" target="_blank">
+                    <li class="mdl-menu__item">
+                        分享到 Telegram
+                    </li>
+                </a>
+            
+        </ul>
+
+
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Conda/">Conda</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Docker/">Docker</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Git/">Git</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Linux/">Linux</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Pip/">Pip</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <blockquote>
+<p>整理的一些个人平时经常用到的命令，包括且不限于<code>Linux</code>、<code>Docker</code>、<code>pip</code>、<code>Conda</code>等，减少些反复检索。不全、不定期更新补充同步个人笔记~</p>
+</blockquote>
+<a id="more"></a>
+<hr>
+<blockquote>
+<p>符号约定</p>
+<ul>
+<li><code>#</code> 表示<u>下一行</u>命令语句<strong>简要说明</strong> <em>(多个<code>#</code>表示对附近命令的具体解释)</em></li>
+<li><code>$</code> 表示<u>当前行</u>命令语句<strong>执行语句</strong> <em>(注意替换<code>[]</code>中内容)</em></li>
+<li><code>&gt;</code> 表示<u>上一行</u>命令语句<strong>输出范例</strong>  <em>(不全有)</em></li>
+<li><code>-</code>  表示对附近命令的具体段落解释，同多个<code>#</code></li>
+<li><code>others</code> 行前无任何符号表示特殊内容：附近命令欲操作的文本替换内容、特殊命令、<del>忘记加行前约定符号的</del>、etc</li>
+</ul>
+</blockquote>
+<hr>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="系统命令"><a href="#系统命令" class="headerlink" title="系统命令"></a>系统命令</h2><pre><code class="bash"># 查看系统内核版本
+$ uname -a
+&gt; Linux ubuntu-pc 4.15.0-47-generic #50-Ubuntu SMP Wed Mar 13 10:44:52 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+
+# 查看系统发行代号
+$ lsb_release -a
+&gt; No LSB modules are available.
+&gt; Distributor ID:    Ubuntu
+&gt; Description:    Ubuntu 18.04.2 LTS
+&gt; Release:    18.04
+&gt; Codename:    bionic
+
+# 升权命令
+$ sudo nautilus
+- 执行后，系统自动打开文件管理界面，在这个界面里可以像在Ｗindows系统下的超级管理员账户一样，拥有最高权限，可对文件／文件夹随意操作复制，粘贴 -
+</code></pre>
+<h2 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h2><pre><code class="bash"># 删除文件夹及其子文件
+$ rm -rf 
+</code></pre>
+<h2 id="升级命令"><a href="#升级命令" class="headerlink" title="升级命令"></a>升级命令</h2><pre><code class="bash"># 升级安装包相关的命令,刷新可安装的软件列表(但是不做任何实际的安装动作)
+$ sudo apt-get update
+# 进行安装包的更新(软件版本的升级)
+$ sudo apt-get upgrade
+# 进行系统版本的升级(Ubuntu版本的升级)
+$ sudo apt-get dist-upgrade 
+# Ubuntu官方推荐的系统升级方式,若加参数-d还可以升级到开发版本,但会不稳定
+$ do-release-upgrade 
+</code></pre>
+<h2 id="换源步骤"><a href="#换源步骤" class="headerlink" title="换源步骤"></a>换源步骤</h2><pre><code class="bash"># 查看Ubuntu的版本号
+$ lsb_release -c
+# 备份内置数据源
+$ cp /etc/apt/sources.list /etc/apt/sources.list_backup
+# 编辑阿里云数据源
+$ sudo vi /etc/apt/sources.list
+## 注释原内容，添加如下内容，注意`bionic`替换为本机对应的版本代码
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+# 更新配置
+$ sudo apt-get update
+</code></pre>
+<h2 id="su-authentication-failure的解决办法"><a href="#su-authentication-failure的解决办法" class="headerlink" title="su:authentication failure的解决办法"></a>su:authentication failure的解决办法</h2><pre><code class="bash"># su:authentication failure的解决办法
+$ sudo passwd root 
+&gt; Enter new UNIX password: 
+&gt; Retype new UNIX password: 
+&gt; passwd: password updated successfully
+</code></pre>
+<pre><code class="bash"># Linux虚拟机共享主机的SSR实现翻墙
+https://www.zybuluo.com/CrazyHenry/note/1097693
+
+- 在主机所在系统（Win10）执行ipconfig， 
+- VMnet8对应的就是NAT模式的网络，VMnet1对应的就是桥接模式的网络。还有一个就是主机的无线网络。
+- 将win10主机的VPN客户端选择“允许局域网的连接”
+- 在Ubuntu系统中，输入无线网络或者VMnet8的ipv4地址，端口写1080，然后应用。
+</code></pre>
+<h2 id="Ubuntu-安装-conda-包管理"><a href="#Ubuntu-安装-conda-包管理" class="headerlink" title="Ubuntu 安装 conda 包管理"></a>Ubuntu 安装 conda 包管理</h2><pre><code class="bash"># Ubuntu 安装 conda 包管理
+
+# 在linux在使用以下命令下载miniconda
+$ wget -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh
+# 安装
+$ sh Miniconda3-latest-Linux-x86_64.sh
+## 输入yes，回车，输入yes，重新登录
+
+# 添加镜像
+$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+$ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda
+$ conda config --set show_channel_urls yes
+
+# 创建Python3.6环境（目前较流行通用的版本）
+$ conda create -n py36 python=3.6
+</code></pre>
+<pre><code class="bash"># 设置默认python
+$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 100
+$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 150
+# 如果要切换到Python2，执行：
+$ sudo update-alternatives --config python
+</code></pre>
+<h2 id="Ubuntu-系统安装-Redis"><a href="#Ubuntu-系统安装-Redis" class="headerlink" title="Ubuntu 系统安装 Redis"></a>Ubuntu 系统安装 Redis</h2><pre><code class="bash"># Ubuntu 系统安装 Redis
+$ sudo apt-get update
+$ sudo apt-get install redis-server
+# 启动 Redis
+$ redis-server
+# 查看 redis 是否启动
+$ redis-cli
+</code></pre>
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="更换国内镜像源"><a href="#更换国内镜像源" class="headerlink" title="更换国内镜像源"></a>更换国内镜像源</h2><pre><code class="bash"># 更换国内镜像源
+- /etc/docker/daemon.json（Linux）
+- %programdata%\docker\config\daemon.json（Windows）
+## 在该配置文件中加入（没有该文件的话，请先建一个）
+{
+    &quot;registry-mirrors&quot;: [&quot;http://hub-mirror.c.163.com&quot;],
+    &quot;max-concurrent-downloads&quot;: 10,
+    &quot;max-concurrent-uploads&quot;: 20,
+    &quot;live-restore&quot;: true
+}
+# 执行如下两个命令才会生效
+$ sudo systemctl daemon-reload 
+$ sudo systemctl restart docker
+</code></pre>
+<h2 id="暂时使用第三方镜像源命令实例"><a href="#暂时使用第三方镜像源命令实例" class="headerlink" title="暂时使用第三方镜像源命令实例"></a>暂时使用第三方镜像源命令实例</h2><pre><code class="bash"># 暂时使用第三方镜像源命令实例
+## 网易
+docker pull hub-mirror.c.163.com/ufoym/deepo:all-py36-cu90
+## 中科大
+docker pull docker.mirrors.ustc.edu.cn/ufoym/deepo
+
+## `:`后表示要拉取得具体镜像标签版本，没有的话拉取过来的是默认的
+docker pull hub-mirror.c.163.com/mxnet/python:1.4.1_gpu_cu90_py3
+</code></pre>
+<h2 id="查看cudna及cudnn版本"><a href="#查看cudna及cudnn版本" class="headerlink" title="查看cudna及cudnn版本"></a>查看cudna及cudnn版本</h2><pre><code class="bash"># 查看cuda 版本 
+$ cat /usr/local/cuda/version.txt
+&gt; CUDA Version 9.0.176
+# 查看cudnn 版本 
+$ cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2
+&gt; define CUDNN_MAJOR 7
+&gt; define CUDNN_MINOR 0
+&gt; define CUDNN_PATCHLEVEL 5
+</code></pre>
+<h2 id="常用docker操作命令"><a href="#常用docker操作命令" class="headerlink" title="常用docker操作命令"></a>常用docker操作命令</h2><pre><code class="bash"># 创建容器
+$ docker images    ## 获取镜像ID
+$ nvidia-docker run -d -it --name=&quot;[容器名]&quot; [镜像ID] bash
+
+# 进入容器
+$ docker exec -it [容器名或容器ID] bash
+
+# 终止容器
+$ docker stop [容器名或容器ID]
+
+# 删除容器
+$ docker rm [容器名或容器ID]
+
+# commit
+$ docker commit -a &quot;[提交用户名]&quot; -m &quot;[提交说明]&quot; 4668a778b55a mxnet_cv:v2-cpu
+
+# 删除镜像
+$ docker ps    ## 如有欲删除镜像的运行容器实例，先终止容器并删除容器
+$ docker images
+$ docker rmi [镜像ID]
+</code></pre>
+<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1><pre><code class="bash"># 关闭行号
+：set nonumber
+
+# 开启行号
+：set number
+</code></pre>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><pre><code class="bash"># git config
+
+# 查看当前配置
+git config --list
+</code></pre>
+<h1 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h1><h2 id="换国内源"><a href="#换国内源" class="headerlink" title="换国内源"></a>换国内源</h2><pre><code class="bash">$ pip install pip -U
+$ pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<pre><code class="bash"># 导出项目包依赖
+## 生成requirements.txt文件
+pip freeze &gt; requirements.txt
+## 安装requirements.txt依赖
+pip install -r requirements.txt
+</code></pre>
+<h1 id="pipenv"><a href="#pipenv" class="headerlink" title="pipenv"></a>pipenv</h1><blockquote>
+<p>参考：<a href="https://hellopython.readthedocs.io/zh_CN/latest/pipenv.html#virtualenv" target="_blank" rel="noopener">https://hellopython.readthedocs.io/zh_CN/latest/pipenv.html#virtualenv</a></p>
+</blockquote>
+<pre><code class="bash"># 将虚环境文件的默认创建目录设置在项目根目录下
+## 新建系统环境变量
+===
+Name：WORKON_HOME
+Value：PIPENV_VENV_IN_PROJECT
+===
+- 在windows下使用pipenv shell时，虚拟环境文件夹会在C：\Users\Administrator\.virtualenvs\目录下默认创建，为了方便管理，将这个虚环境的文件的位置更改一下
+- 新建一个名为“ WORKON_HOME ”的环境变量（如果已存在就忽略此步骤），然后将环境变量的值设置为“ PIPENV_VENV_IN_PROJECT ” 
+</code></pre>
+<h2 id="更换项目包源镜像"><a href="#更换项目包源镜像" class="headerlink" title="更换项目包源镜像"></a>更换项目包源镜像</h2><pre><code># 编辑修改项目文件夹下的Pipfile（也就是说修改仅对当前项目有效）
+
+[[source]]
+
+url = &quot;https://pypi.tuna.tsinghua.edu.cn/simple/&quot;
+verify_ssl = true
+name = &quot;pypi&quot;
+
+&gt; 也可以到pyenv源码中修改替换对应内容，达到对所有项目默认使用国内镜像源的效果
+&gt; 修改Pipenv源码文件...\Lib\site-packages\pipenv\project.py的127行
+...
+else:
+    DEFAULT_SOURCE = {
+        u&quot;url&quot;: u&quot;https://pypi.tuna.tsinghua.edu.cn/simple/&quot;,
+        u&quot;verify_ssl&quot;: True,
+        u&quot;name&quot;: u&quot;pypi&quot;,
+    }
+...
+</code></pre><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code class="bash"># 将 virtualenv 环境的位置改为工程目录下
+&gt; 在项目根目录下手动创建 .venv 目录，然后再执行 pipenv install
+
+# 创建Pipenv虚拟环境
+$ pipenv install 
+## or 
+$ pipenv shell
+- 初始化虚拟环境后，会在项目目录下生成Pipfile和Pipfile.lock，以及目录.venv
+- Pipfile和Pipfile.lock为pipenv包的配置文件，代替原来的 requirement.txt
+- 项目提交时，可将Pipfile 文件和Pipfile.lock文件一并提交,待其他开发克隆下载，根据此Pipfile运行命令pipenv install –dev生成自己的虚拟环境
+
+# 安装包
+$ pipenv install [package_name]
+
+# 卸载包
+$ pipenv uninstall [package_name]
+
+# 查看安装的包的情况
+$ pipenv run pip list
+
+# 删除卸载环境
+$ pipenv --rm
+- 注意: 删除虚拟环境后，只是删除了.venv目录，但项目下面的Pipfile和Pipfile.lock并没有被删除。
+
+# 优化Pipfile.lock以防太慢
+pipenv install --skip-lock [package_name]
+pipenv lock
+</code></pre>
+<h1 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h1><pre><code class="bash">
+</code></pre>
+<h2 id="常用conda命令"><a href="#常用conda命令" class="headerlink" title="常用conda命令"></a>常用conda命令</h2><pre><code class="bash"># 查看本机已有环境
+$ conda info -e
+
+# 激活目标环境
+$ conda activate [envs_name]
+
+# 创建新环境
+$ conda create -n py36 python=3.6
+# 激活目标环境
+$ conda activate py36
+# 查看当前激活环境已安装包
+$ conda list
+# 删除环境
+$ conda env remove -n py36
+
+## 除了使用pip命令来生成及安装requirement.txt文件以外，也可以使用conda命令来安装。
+$ conda install --yes --file requirements.txt
+</code></pre>
+<h1 id="Jupyter"><a href="#Jupyter" class="headerlink" title="Jupyter"></a>Jupyter</h1><h2 id="Google-colab-本地编译器命令"><a href="#Google-colab-本地编译器命令" class="headerlink" title="Google colab 本地编译器命令"></a>Google colab 本地编译器命令</h2><pre><code class="bash"># 目标环境
+$ conda activate py36
+# 安装并启用
+$ pip install jupyter_http_over_ws
+$ jupyter serverextension enable --py jupyter_http_over_ws
+# 启动服务器并进行身份验证
+$ conda activate py36
+$ jupyter notebook --NotebookApp.allow_origin=&#39;https://colab.research.google.com&#39; --port=8888 --NotebookApp.port_retries=0
+
+# 查看当前工作目录
+$ !pwd
+# 切换目录
+$ %cd
+</code></pre>
+<h1 id="PyInstaller"><a href="#PyInstaller" class="headerlink" title="PyInstaller"></a>PyInstaller</h1><pre><code class="bash"># UnicodeDecodeError: &#39;utf-8&#39; codec can&#39;t decode byte 0xce in position 122: invalid continuation byte
+out = out.decode(encoding, errors=&#39;ignore&#39;)
+</code></pre>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            This blog is under a <a href="/creativecommons/" target="_blank">CC BY-NC-SA 3.0 Unported License</a>
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://idforhyit.github.io/2019/07/30/Command_Notes/">https://idforhyit.github.io/2019/07/30/Command_Notes/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 来必力 -->
+<div id="livere-comment">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zODg1NC8xNTM4Mg==">
+	<script type="text/ls-javascript" id="livere-comment-js">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+       if (typeof LivereTower === 'function') { return; }
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+       e.parentNode.insertBefore(j, e);
+   })(document, 'script');
+	</script>
+</div>
+</div>
+<style>
+    #livere-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2019/07/08/Dataset-Face/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/side.jpg);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/images/avatar_github.jpg" alt="IDforHYIT's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        idforhyit@qq.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: idforhyit@qq.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="https://idforhyit.coding.me/GitBook/" target="_blank" title="GitBook">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">library_books</i>
+                        
+                        GitBook
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="http://idforhyit.orgfree.com/" target="_blank" title="Drive">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">cloud_queue</i>
+                        
+                        Drive
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/07/">七月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/05/">五月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/04/">四月 2019<span class="sidebar_archives-count">6</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/03/">三月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/02/">二月 2019<span class="sidebar_archives-count">16</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/10/">十月 2018<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/08/">八月 2018<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/Lab/">Lab<span class="sidebar_archives-count">11</span></a></li><li><a class="sidebar_archives-link" href="/categories/Others/">Others<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/categories/备忘录/">备忘录<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/安利区/">安利区<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/搬运区/">搬运区<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/蓝桥杯/">蓝桥杯<span class="sidebar_archives-count">13</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/about" title="About">
+                
+                    <i class="material-icons sidebar-material-icons">person</i>
+                
+                About
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline" title="Timeline">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                Timeline
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/gallery" title="Gallery">
+                
+                    <i class="material-icons sidebar-material-icons">insert_photo</i>
+                
+                Gallery
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/links" title="Links">
+                
+                    <i class="material-icons sidebar-material-icons">link</i>
+                
+                Links
+            </a>
+        </li>
+        
+    
+        <li>
+            <a href="/tags" title="Tags">
+                
+                    <i class="material-icons sidebar-material-icons">table_chart</i>
+                
+                Tags
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="http://144.34.236.154:34567/A:" title="Drive">
+                
+                    <i class="material-icons sidebar-material-icons">cloud_queue</i>
+                
+                Drive
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Article Number  -->
+    
+        <li>
+            <a href="/archives">
+                文章总数
+                <span class="sidebar-badge">41</span>
+            </a>
+        </li>
+        
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+    <a href="mailto:hiviosey@gmail.com" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.help
+        <span class="mdl-button__ripple-container">
+          <span class="mdl-ripple"></span>
+        </span>
+      </div>
+    </a>
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+    <!-- Paradox Footer Left Section -->
+    <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.zhihu.com/people/IDforHYIT/activities" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+        <a href="https://t.me/IDforHYIT" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-telegram">
+                <span class="visuallyhidden">Telegram</span>
+            </button><!--
+     --></a>
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+    <!--Copyright-->
+    <div id="copyright">
+        Copyright&nbsp;©&nbsp;1999&nbsp;-
+        <script type="text/javascript">var fd = new Date(); document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>
+        IDforHYIT's blogs
+        
+        <br>
+        
+        <a href="https://996.icu/#/zh_CN" rel="nofollow">996.ICU 备2333号-9527</a>
+        
+        
+
+
+        <!-- <script async src="busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> -->
+        <div>
+            <span id="busuanzi_container_site_uv">本站访客数为 <u><span id="busuanzi_value_site_uv"></span></u> 次
+                &nbsp;&nbsp;<span>|</span>&nbsp;&nbsp;
+            <span id="busuanzi_container_site_pv">总访问量为 <u><span id="busuanzi_value_site_pv"></span></u> 人次
+        </span></span></div>
+    </div>
+
+    <!-- Paradox Footer Right Section -->
+
+    <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+    <!-- <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div> -->
+    <div class="mdl-mini-footer--right-section">
+        <div>
+            <center>
+                <div class="footer-develop-div">本页面由<a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a>强力驱动</div>
+            </center>
+            <center>
+                <div class="footer-develop-div">Theme by <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a>（Mod By IDforHYIT）</div>
+            </center>
+            <center>ღ( ´･ᴗ･` )比心</center>
+        </div>
+    </div>
+    
+</footer>
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+    
+        <script>lsloader.load("sm_js","/js/smoothscroll.js?lOy/ACj5suSNi7ZVFVbpFQ==", true)</script>
+    
+
+
+
+<!-- Busuanzi -->
+
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!-- 
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  -->
+
+
+   
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+<script type="text/ls-javascript" id="Bing-Background-script">
+    queue.offer(function(){
+        $('body').attr('data-original', 'https://api.i-meto.com/bing?');
+    });
+</script>
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
